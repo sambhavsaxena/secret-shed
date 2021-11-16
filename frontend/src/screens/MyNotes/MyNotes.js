@@ -55,7 +55,7 @@ function MyNotes({ history, search }) {
 
   return (
     <MainScreen title={`Written by you`}>
-      <Link to="/createnote">
+      <Link to="/create">
         <Button variant="outline-primary" style={{ marginBottom: '40px', marginTop: '50px' }} size="md">
           Create an article
         </Button>
