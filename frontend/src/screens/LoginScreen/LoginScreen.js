@@ -57,7 +57,7 @@ function LoginScreen({ history }) {
           </Form.Group>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <Button type="submit">
-              Submit
+              Sign in
             </Button>
           </div>
         </Form>
