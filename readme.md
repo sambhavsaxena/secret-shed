@@ -1,10 +1,13 @@
 # [The Monospace](https://themonospace.herokuapp.com/myarticles) | [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/main/LICENSE) |  [![npm version](https://img.shields.io/npm/v/react.svg?style=flat)](https://www.npmjs.com/package/react) | [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/sambhavsaxena/TheMonospace-CloudBased)
 
-React is a JavaScript library for building user interfaces.
+The Monospace is a minimalistic blog web app, which can be used for wide range of purposes including keeping secrets.
+Because of its privacy-related liberations, we keep the user information encrypted even for the backend developers, and nobody, including the system admin can access what a user writes and post. 
 
-* **Declarative:** React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes. Declarative views make your code more predictable, simpler to understand, and easier to debug.
-* **Component-Based:** Build encapsulated components that manage their own state, then compose them to make complex UIs. Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep state out of the DOM.
-* **Learn Once, Write Anywhere:** We don't make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code. React can also render on the server using Node and power mobile apps using [React Native](https://reactnative.dev/).
+For privacy policy, visit [this link](https://policiesofmonospace.netlify.app/)
+
+* **Why this:** Can be used to store literally anything in text format, including notes, articles, stories and more.
+* **SHA-256 encrytped:** The content you post here will always be private, and will stay in encrypted form, using SHA-256 encryption algorithm. 
+* **Store anything, Write Anywhere:** We don't make assumptions about anyone or anything, it simply is a waste of time and resources as we don't look to sell user data in order to gain huge amount of money, what many multinational organizations do openly, ruling the web.
 
 [Learn how to use React in your own project](https://reactjs.org/docs/getting-started.html).
 
