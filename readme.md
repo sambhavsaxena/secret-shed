@@ -1,7 +1,7 @@
 # [The Monospace](https://themonospace.herokuapp.com/myarticles) | [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/main/LICENSE) |  [![npm version](https://img.shields.io/npm/v/react.svg?style=flat)](https://www.npmjs.com/package/react) | [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/sambhavsaxena/TheMonospace-CloudBased)
 
 The Monospace is a minimalistic blog web app, which can be used for wide range of purposes including keeping secrets.
-Because of its privacy-related liberations, we keep the user information encrypted even for the backend developers, and nobody, including the system admin can access what a user writes and post. 
+Because of its privacy-related liberations, we keep the user information encrypted. The app has been developed on MERN stack, and can be easily integrated 
 
 For privacy policy, visit [this link](https://policiesofmonospace.netlify.app/).
 
@@ -13,8 +13,14 @@ For privacy policy, visit [this link](https://policiesofmonospace.netlify.app/).
 
 React has been designed for gradual adoption from the start, and **you can use as little or as much React as you need**:
 
-* Use [Online Playgrounds](https://reactjs.org/docs/getting-started.html#online-playgrounds) to get a taste of React.
-* [Add React to a Website](https://reactjs.org/docs/add-react-to-a-website.html) as a `<script>` tag in one minute.
+* Fork and git clone [this](https://github.com/sambhavsaxena/TheMonospace-CloudBased) repository make an instant copy of the content.
+* Alternatively, you can download the source and set it up with Github Desktop.
+* Open the root folder in the code editor you prefer, and run the following commands:
+`
+1) npm install
+2) cd ./frontend/ && npm i
+3) cd.. && npm run dev(Already configured in [package.json](https://github.com/sambhavsaxena/TheMonospace-CloudBased/blob/main/package.json).
+`
 * [Create a New React App](https://reactjs.org/docs/create-a-new-react-app.html) if you're looking for a powerful JavaScript toolchain.
 
 You can use React as a `<script>` tag from a [CDN](https://reactjs.org/docs/cdn-links.html), or as a `react` package on [npm](https://www.npmjs.com/package/react).
