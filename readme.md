@@ -16,11 +16,11 @@ React has been designed for gradual adoption from the start, and **you can use a
 * Fork and git clone [this](https://github.com/sambhavsaxena/TheMonospace-CloudBased) repository make an instant copy of the content.
 * Alternatively, you can download the source and set it up with Github Desktop.
 * Open the root folder in the code editor you prefer, and run the following commands:
-`
+```
 1) npm install
 2) cd ./frontend/ && npm i
 3) cd.. && npm run dev(Already configured in [package.json](https://github.com/sambhavsaxena/TheMonospace-CloudBased/blob/main/package.json).
-`
+```
 * [Create a New React App](https://reactjs.org/docs/create-a-new-react-app.html) if you're looking for a powerful JavaScript toolchain.
 
 You can use React as a `<script>` tag from a [CDN](https://reactjs.org/docs/cdn-links.html), or as a `react` package on [npm](https://www.npmjs.com/package/react).
