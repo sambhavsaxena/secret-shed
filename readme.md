@@ -39,7 +39,6 @@ The Monospace has adopted a Code of Conduct that we expect project participants 
 Read the React's [contributing guide](https://reactjs.org/contributing/how-to-contribute.html) to learn about our development process, how to propose bugfixes and improvements, and how to build and test your changes to React, or overall MERN.
 
 ### Good First Issues
-
 To help you get your feet wet and get you familiar with our contribution process, we have a list of [good first issues](https://github.com/sambhavsaxena/TheMonospace-CloudBased/labels/good%20first%20issue) that contain bugs which have a relatively limited scope. This is a great place to get started <3.
 
 ### License
