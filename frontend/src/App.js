@@ -32,7 +32,7 @@ function App() {
           />
           <Route path="/note/:id" exact component={SingleNote} />
           <Route path="/about" exact component={About} />
-          <Route path="/createnote" exact component={CreateNote} />
+          <Route path="/create" exact component={CreateNote} />
           <Route path="/profile" exact component={ProfileScreen} />
           <Route path="/*" component={NotFound} />
         </Switch>
