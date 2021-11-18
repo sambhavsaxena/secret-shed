@@ -1,7 +1,7 @@
 # [The Monospace](https://themonospace.herokuapp.com/myarticles) | [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/main/LICENSE) |  [![npm version](https://img.shields.io/npm/v/react.svg?style=flat)](https://www.npmjs.com/package/react) | [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/sambhavsaxena/TheMonospace-CloudBased)
 
 The Monospace is a minimalistic blog web app, which can be used for wide range of purposes including keeping secrets.
-Because of its privacy-related liberations, we keep the user information encrypted. The app has been developed on MERN stack, and can be easily integrated 
+Because of its privacy-related liberations, we keep the user information encrypted. 
 
 For privacy policy, visit [this link](https://policiesofmonospace.netlify.app/).
 
