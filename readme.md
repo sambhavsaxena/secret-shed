@@ -19,7 +19,7 @@ React has been designed for gradual adoption from the start, and **you can use a
 
 1) npm install
 2) cd ./frontend/ && npm i
-3) cd.. && npm run dev(Already configured in [package.json](https://github.com/sambhavsaxena/TheMonospace-CloudBased/blob/main/package.json).
+3) cd.. && npm run dev, already configured in [package.json](https://github.com/sambhavsaxena/TheMonospace-CloudBased/blob/main/package.json).
 
 
 ## Documentation
