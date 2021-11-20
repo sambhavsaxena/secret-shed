@@ -59,7 +59,7 @@ const ProfileScreen = ({ location, history }) => {
   const submitHandler = (e) => {
     e.preventDefault();
     if (password !== "") {
-      if (password !== confirmPassword) {
+      if (password !== confirmPassword || confirmPassword !== password) {
         return setPicMessage("Passwords do not match");
       }
       if (password.length < 6) {
