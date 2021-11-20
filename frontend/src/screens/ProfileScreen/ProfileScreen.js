@@ -77,12 +77,7 @@ const ProfileScreen = ({ location, history }) => {
             <Form onSubmit={submitHandler}>
               <Form.Group controlId="name" style={{ marginBottom: '20px', width: '500px', textAlign: 'center' }}>
                 {loading && <Loading />}
-                {success && (
-                  <ErrorMessage variant="success">
-                    Updated successfully
-                  </ErrorMessage>
-                )}
-                {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+                {error && <ErrorMessage variant="danger">{error}</ErrorMessage> || success && <ErrorMessage variant="success">Updated successfully</ErrorMessage>}
                 {picMessage && (
                   <ErrorMessage variant="danger">{picMessage}</ErrorMessage>
                 )}
