@@ -23,10 +23,16 @@ function SingleNote({ match, history }) {
   const noteDelete = useSelector((state) => state.noteDelete);
   const { loading: loadingDelete, error: errorDelete } = noteDelete;
 
+  const deleteHandler = (id) => {
+    if (window.confirm("Are you sure?")) {
+      dispatch(deleteNoteAction(id));
+    }
+    history.push("/myarticles");
+  };
+
   useEffect(() => {
     const fetching = async () => {
       const { data } = await axios.get(`/api/notes/${match.params.id}`);
-
       setTitle(data.title);
       setContent(data.content);
       setCategory(data.category);
@@ -46,20 +52,22 @@ function SingleNote({ match, history }) {
     e.preventDefault();
     dispatch(updateNoteAction(match.params.id, title, content, category));
     if (!title || !content || !category) return;
-
     resetHandler();
     history.push("/myarticles");
   };
-  
-  const deleteHandler = (id) => {
-    if (window.confirm("Are you sure?")) {
-      dispatch(deleteNoteAction(id));
-      history.push("/myarticles");
-    }
-    else {
-      return;
-    }
-  };
+
+  var lMargin = 10; //left margin in mm
+  var rMargin = 10; //right margin in mm
+  var pdfInMM = 210;  // width of A4 in mm
+  function getPDF() {
+    const doc = new jsPDF("p", "mm", "a4");
+    const paragraph = `${content}${content}`;
+    const lines = doc.splitTextToSize(paragraph, (pdfInMM - lMargin - rMargin));
+    doc.text(`${title}`, 105, 30);
+    doc.setFontSize(12);
+    doc.text(2 * lMargin + rMargin, 40, lines);
+    doc.save(`${title}.pdf`);
+  }
 
   return (
     <MainScreen title="Edit your article">
@@ -121,20 +129,7 @@ function SingleNote({ match, history }) {
               <Button
                 variant="outline-primary"
                 className="mx-2"
-                onClick={() => {
-                  const doc = new jsPDF('p', 'px', 'letter');
-                  doc.text(
-                    `${title}`,
-                    200,
-                    50,
-                  );
-                  doc.text(
-                    `${content}`,
-                    0,
-                    80
-                  );
-                  doc.save(`${title}.pdf`);
-                }}
+                onClick={() => getPDF()}
               >Save as pdf</Button>
               <Button
                 className="mx-2"
