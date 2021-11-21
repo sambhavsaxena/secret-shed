@@ -13,10 +13,6 @@ function MyNotes({ history, search }) {
   const noteList = useSelector((state) => state.noteList);
   const { loading, error, notes } = noteList;
 
-  // const filteredNotes = notes.filter((note) =>
-  //   note.title.toLowerCase().includes(search.toLowerCase())
-  // );
-
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
@@ -50,6 +46,10 @@ function MyNotes({ history, search }) {
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure?")) {
       dispatch(deleteNoteAction(id));
+      history.push("/myarticles");
+    }
+    else {
+      return;
     }
   };
 
