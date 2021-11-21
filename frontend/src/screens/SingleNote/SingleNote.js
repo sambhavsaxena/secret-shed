@@ -23,13 +23,6 @@ function SingleNote({ match, history }) {
   const noteDelete = useSelector((state) => state.noteDelete);
   const { loading: loadingDelete, error: errorDelete } = noteDelete;
 
-  const deleteHandler = (id) => {
-    if (window.confirm("Are you sure?")) {
-      dispatch(deleteNoteAction(id));
-    }
-    history.push("/myarticles");
-  };
-
   useEffect(() => {
     const fetching = async () => {
       const { data } = await axios.get(`/api/notes/${match.params.id}`);
@@ -56,6 +49,16 @@ function SingleNote({ match, history }) {
 
     resetHandler();
     history.push("/myarticles");
+  };
+  
+  const deleteHandler = (id) => {
+    if (window.confirm("Are you sure?")) {
+      dispatch(deleteNoteAction(id));
+      history.push("/myarticles");
+    }
+    else {
+      return;
+    }
   };
 
   return (
