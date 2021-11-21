@@ -62,10 +62,15 @@ const ProfileScreen = ({ location, history }) => {
       if (password !== confirmPassword) {
         return setPicMessage("Passwords do not match");
       }
+      if (password.length < 6) {
+        return setPicMessage("Password must have over 6 characters");
+      }
+    }
+    if (confirmPassword !== "") {
       if (confirmPassword !== password) {
         return setPicMessage("Passwords do not match");
       }
-      if (password.length < 6) {
+      if (confirmPassword.length < 6) {
         return setPicMessage("Password must have over 6 characters");
       }
     }
