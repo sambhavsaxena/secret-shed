@@ -7,6 +7,7 @@ import { deleteNoteAction, updateNoteAction } from "../../actions/notesActions";
 import ErrorMessage from "../../components/ErrorMessage";
 import Loading from "../../components/Loading";
 import ReactMarkdown from "react-markdown";
+import { jsPDF } from 'jspdf';
 
 function SingleNote({ match, history }) {
   const [title, setTitle] = useState();
@@ -114,6 +115,24 @@ function SingleNote({ match, history }) {
               <Button variant="outline-primary" type="submit">
                 Update Article
               </Button>
+              <Button
+                variant="outline-primary"
+                className="mx-2"
+                onClick={() => {
+                  const doc = new jsPDF('p', 'px', 'letter');
+                  doc.text(
+                    `${title}`,
+                    200,
+                    50,
+                  );
+                  doc.text(
+                    `${content}`,
+                    0,
+                    80
+                  );
+                  doc.save(`${title}.pdf`);
+                }}
+              >Save as pdf</Button>
               <Button
                 className="mx-2"
                 variant="outline-primary"
