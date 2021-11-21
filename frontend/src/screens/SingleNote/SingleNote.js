@@ -112,7 +112,7 @@ function SingleNote({ match, history }) {
             </Form.Group>
             {loading && <Loading size={50} />}
             <div style={{ marginTop: '50px', marginBottom: '20px' }}>
-              <Button variant="outline-primary" type="submit">
+              <Button className="mx-2" variant="outline-primary" type="submit">
                 Update Article
               </Button>
               <Button
