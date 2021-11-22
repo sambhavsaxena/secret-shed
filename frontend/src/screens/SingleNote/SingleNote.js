@@ -61,7 +61,7 @@ function SingleNote({ match, history }) {
   var pdfInMM = 210;  // width of A4 in mm
   function getPDF() {
     const doc = new jsPDF("p", "mm", "a4");
-    const paragraph = `${content}${content}`;
+    const paragraph = `${content}`;
     const lines = doc.splitTextToSize(paragraph, (pdfInMM - lMargin - rMargin));
     doc.text(`${title}`, 105, 30);
     doc.setFontSize(12);
