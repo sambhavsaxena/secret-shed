@@ -106,11 +106,9 @@ function SingleNote({ match, history }) {
             {content && (
               <Card className="text-center" style={{ marginBottom: '20px', marginTop: '20px' }}>
                 <Card.Header>Article preview</Card.Header>
-                <Card.Text style={{ marginTop: '20px', marginLeft: '30px', marginRight: '30px' }}>
-                  <strong>{title}</strong>
-                </Card.Text>
                 <Card.Body ref={componentRef}>
-                  <ReactMarkdown>{content}</ReactMarkdown>
+                  <strong><div className="text-center" style={{ fontSize: '24px', marginTop: '20px', marginBottom: '20px' }}>{title}</div></strong>
+                  <ReactMarkdown className="text-center" style={{ fontSize: '12px' }}>{content}</ReactMarkdown>
                 </Card.Body>
               </Card>
             )}
@@ -144,7 +142,6 @@ function SingleNote({ match, history }) {
             </div>
           </Form>
         </Card.Body>
-
         <Card.Footer className="text-muted">
           {new Date().toLocaleTimeString()} | {new Date().toLocaleDateString()}
         </Card.Footer>
