@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Accordion, Button, Card } from "react-bootstrap";
 import MainScreen from "../../components/MainScreen";
 import { Link } from "react-router-dom";
@@ -7,12 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteNoteAction, listNotes } from "../../actions/notesActions";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
+import { useReactToPrint } from 'react-to-print';
 
 function MyNotes({ history, search }) {
   const dispatch = useDispatch();
   const noteList = useSelector((state) => state.noteList);
   const { loading, error, notes } = noteList;
-
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
@@ -53,6 +53,11 @@ function MyNotes({ history, search }) {
     }
   };
 
+  const componentRef = useRef();
+  const getPDF = useReactToPrint({
+    content: () => componentRef.current,
+  });
+
   return (
     <MainScreen title={`Written by you`}>
       <Link to="/create">
@@ -77,7 +82,6 @@ function MyNotes({ history, search }) {
               <Card style={{ margin: 10 }} key={note._id}>
                 <Card.Header style={{ display: "flex" }}>
                   <span
-                    // onClick={() => ModelShow(note)}
                     style={{
                       color: "black",
                       textDecoration: "none",
@@ -85,18 +89,19 @@ function MyNotes({ history, search }) {
                       cursor: "pointer",
                       alignSelf: "center",
                       fontSize: 18,
-                    }}
-                  >
+                    }}>
                     <Accordion.Toggle
                       as={Card.Text}
                       variant="link"
-                      eventKey="0"
-                    >
+                      eventKey="0">
                       {note.title}
                     </Accordion.Toggle>
                   </span>
-
                   <div>
+                    <Button
+                      className="mx-2"
+                      onClick={() => getPDF()}
+                    >Save as pdf</Button>
                     <Button href={`/note/${note._id}`}>Edit</Button>
                     <Button
                       className="mx-2"
@@ -107,10 +112,11 @@ function MyNotes({ history, search }) {
                   </div>
                 </Card.Header>
                 <Accordion.Collapse eventKey="0">
-                  <Card.Body>
+                  <Card.Body ref={componentRef}>
+                    <strong><div className="text-center" style={{ fontSize: '24px', marginTop: '20px', marginBottom: '20px' }}>{note.title}</div></strong>
                     <blockquote className="blockquote mb-0">
-                      <ReactMarkdown>{note.content}</ReactMarkdown>
-                      <footer className="blockquote-footer" style={{ marginTop: '20px' }}>
+                      <ReactMarkdown className="text-center" style={{ fontSize: '12px' }}>{note.content}</ReactMarkdown>
+                      <footer className="blockquote-footer text-center" style={{ marginTop: '20px' }}>
                         Created:{" "}
                         <cite title="Source Title">
                           {note.createdAt.substring(0, 10)}
