@@ -12,6 +12,13 @@ function CreateNote({ history }) {
   const [content, setContent] = useState("");
   const [category, setCategory] = useState("");
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  if (!userInfo) {
+    history.push("/");
+  }
+
   const dispatch = useDispatch();
 
   const noteCreate = useSelector((state) => state.noteCreate);
@@ -27,7 +34,6 @@ function CreateNote({ history }) {
     e.preventDefault();
     dispatch(createNoteAction(title, content, category));
     if (!title || !content || !category) return;
-
     resetHandler();
     history.push("/myarticles");
   };
