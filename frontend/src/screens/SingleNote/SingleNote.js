@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import MainScreen from "../../components/MainScreen";
 import axios from "axios";
 import { Button, Card, Form } from "react-bootstrap";
@@ -7,7 +7,7 @@ import { deleteNoteAction, updateNoteAction } from "../../actions/notesActions";
 import ErrorMessage from "../../components/ErrorMessage";
 import Loading from "../../components/Loading";
 import ReactMarkdown from "react-markdown";
-import { jsPDF } from 'jspdf';
+import { useReactToPrint } from 'react-to-print';
 
 function SingleNote({ match, history }) {
   const [title, setTitle] = useState();
@@ -56,18 +56,10 @@ function SingleNote({ match, history }) {
     history.push("/myarticles");
   };
 
-  var lMargin = 10; //left margin in mm
-  var rMargin = 10; //right margin in mm
-  var pdfInMM = 210;  // width of A4 in mm
-  function getPDF() {
-    const doc = new jsPDF("p", "mm", "a4");
-    const paragraph = `${content}`;
-    const lines = doc.splitTextToSize(paragraph, (pdfInMM - lMargin - rMargin));
-    doc.text(`${title}`, 105, 30);
-    doc.setFontSize(12);
-    doc.text(2 * lMargin + rMargin, 40, lines);
-    doc.save(`${title}.pdf`);
-  }
+  const componentRef = useRef();
+  const getPDF = useReactToPrint({
+    content: () => componentRef.current,
+  });
 
   return (
     <MainScreen title="Edit your article">
@@ -102,10 +94,12 @@ function SingleNote({ match, history }) {
               />
             </Form.Group>
             {content && (
-              <Card style={{ marginBottom: '20px' }}>
+              <Card className="text-center" style={{ marginBottom: '20px', marginTop: '20px' }}>
                 <Card.Header>Article preview</Card.Header>
-                <Card.Text style={{ marginTop: '10px' }}><strong>{title}</strong></Card.Text>
-                <Card.Body>
+                <Card.Text style={{ marginTop: '20px', marginLeft: '30px', marginRight: '30px' }}>
+                  <strong>{title}</strong>
+                </Card.Text>
+                <Card.Body ref={componentRef}>
                   <ReactMarkdown>{content}</ReactMarkdown>
                 </Card.Body>
               </Card>
