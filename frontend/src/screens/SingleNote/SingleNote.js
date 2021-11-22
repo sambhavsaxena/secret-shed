@@ -17,6 +17,9 @@ function SingleNote({ match, history }) {
 
   const dispatch = useDispatch();
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
   const noteUpdate = useSelector((state) => state.noteUpdate);
   const { loading, error } = noteUpdate;
 
@@ -26,9 +29,16 @@ function SingleNote({ match, history }) {
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure?")) {
       dispatch(deleteNoteAction(id));
+      history.push("/myarticles");
     }
-    history.push("/myarticles");
+    else {
+      return
+    }
   };
+
+  if (!userInfo) {
+    history.push("/");
+  }
 
   useEffect(() => {
     const fetching = async () => {
