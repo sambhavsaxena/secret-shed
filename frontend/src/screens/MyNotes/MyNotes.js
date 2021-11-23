@@ -92,10 +92,6 @@ function MyNotes({ history, search }) {
                     </Accordion.Toggle>
                   </span>
                   <div>
-                    <Button
-                      className="mx-2"
-                      onClick={() => getPDF()}
-                    >Save as pdf</Button>
                     <Button href={`/note/${note._id}`}>Edit</Button>
                     <Button
                       className="mx-2"
