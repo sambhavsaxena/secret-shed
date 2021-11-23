@@ -3,6 +3,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import LandingPage from "./screens/LandingPage/LandingPage";
 import MyNotes from "./screens/MyNotes/MyNotes";
+import Rules from "./screens/Rules"
 import SingleNote from "./screens/SingleNote/SingleNote";
 import LoginScreen from "./screens/LoginScreen/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen/RegisterScreen";
@@ -32,6 +33,7 @@ function App() {
           />
           <Route path="/note/:id" exact component={SingleNote} />
           <Route path="/about" exact component={About} />
+          <Route path="/rules" exact component={Rules} />
           <Route path="/create" exact component={CreateNote} />
           <Route path="/profile" exact component={ProfileScreen} />
           <Route path="/*" component={NotFound} />

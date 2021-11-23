@@ -62,6 +62,10 @@ function Header({ setSearch }) {
                     {`${userInfo.name}`}
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
+                  <NavDropdown.Item className="text-center" href="/rules">
+                    Rules
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
                   <NavDropdown.Item onClick={logoutHandler} className="text-center">
                     Logout
                   </NavDropdown.Item>
