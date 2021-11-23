@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { Accordion, Button, Card } from "react-bootstrap";
 import MainScreen from "../../components/MainScreen";
 import { Link } from "react-router-dom";
