@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteNoteAction, listNotes } from "../../actions/notesActions";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
-import { useReactToPrint } from 'react-to-print';
 
 function MyNotes({ history, search }) {
   const dispatch = useDispatch();
@@ -52,11 +51,6 @@ function MyNotes({ history, search }) {
       return;
     }
   };
-
-  const componentRef = useRef();
-  const getPDF = useReactToPrint({
-    content: () => componentRef.current,
-  });
 
   return (
     <MainScreen title={`Written by you`}>
@@ -112,8 +106,7 @@ function MyNotes({ history, search }) {
                   </div>
                 </Card.Header>
                 <Accordion.Collapse eventKey="0">
-                  <Card.Body ref={componentRef}>
-                    <strong><div className="text-center" style={{ fontSize: '24px', marginTop: '20px', marginBottom: '20px' }}>{note.title}</div></strong>
+                  <Card.Body>
                     <blockquote className="blockquote mb-0">
                       <ReactMarkdown className="text-center" style={{ fontSize: '12px' }}>{note.content}</ReactMarkdown>
                       <footer className="blockquote-footer text-center" style={{ marginTop: '20px' }}>
