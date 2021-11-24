@@ -119,7 +119,10 @@ function SingleNote({ match, history }) {
                 <Card.Header>Article preview</Card.Header>
                 <Card.Body ref={componentRef}>
                   <strong><div className="text-center" style={{ fontSize: '24px', marginTop: '20px', marginBottom: '20px' }}>{title}</div></strong>
-                  <ReactMarkdown className="text-center" style={{ fontSize: '12px' }}>{content}</ReactMarkdown>
+                  <ReactMarkdown>---</ReactMarkdown>
+                  <ReactMarkdown className="text-center" style={{ fontSize: '12px' }}>
+                    {content}
+                  </ReactMarkdown>
                 </Card.Body>
               </Card>
             )}
