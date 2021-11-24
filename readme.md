@@ -8,6 +8,7 @@ For privacy policy, visit [this link](https://policiesofmonospace.netlify.app/).
 * **Why this:** Can be used to store literally anything in text format, including notes, articles, stories and more.
 * **Save every bit of content you type:** A `save as pdf` feature has been added with the latest release which allows users to save their content as PDFs.
 * **SHA-256 encrytped:** The content you post here will always be private, and will stay in encrypted form, using SHA-256 encryption algorithm. 
+* **Encrypted pdfs:** The downloaded pdf is text secured, which makes it almost impossible for the text to be copied using any method.
 * **Store anything, Write Anywhere:** We don't make assumptions about anyone or anything, it simply is a waste of time and resources as we don't look to sell user data in order to gain huge amount of money, what many multinational organizations do openly, ruling the web.
 
 ## Installation
