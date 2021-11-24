@@ -28,8 +28,9 @@ function Shared({ match }) {
             <Card.Body>
                 {content && (
                     <Card className="text-center" style={{ marginBottom: '20px', marginTop: '20px' }}>
-                        <Card.Header><strong><div className="text-center" style={{ fontSize: '24px', marginTop: '10px', marginBottom: '10px' }}>{title}</div></strong></Card.Header>
                         <Card.Body ref={componentRef} style={{ marginTop: '20px' }}>
+                            <strong><div className="text-center" style={{ fontSize: '24px', marginTop: '16px', marginBottom: '4px' }}>{title}</div></strong>
+                            <ReactMarkdown className="text-center" style={{ fontSize: '12px' }}>---</ReactMarkdown>
                             <ReactMarkdown className="text-center" style={{ fontSize: '12px' }}>{content}</ReactMarkdown>
                         </Card.Body>
                     </Card>
