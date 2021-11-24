@@ -72,7 +72,10 @@ function Header({ setSearch }) {
                 </NavDropdown>
               </>
             ) : (
-              <Nav.Link href="/about">About</Nav.Link>
+              <>
+                <Nav.Link href="/rules">Rules</Nav.Link>
+                <Nav.Link href="/about">About</Nav.Link>
+              </>
             )}
           </Nav>
         </Navbar.Collapse>

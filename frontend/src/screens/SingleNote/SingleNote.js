@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import MainScreen from "../../components/MainScreen";
 import axios from "axios";
-import { Button, Card, Form } from "react-bootstrap";
+import { Button, Card, Form, Alert } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteNoteAction, updateNoteAction } from "../../actions/notesActions";
 import ErrorMessage from "../../components/ErrorMessage";
@@ -14,6 +14,7 @@ function SingleNote({ match, history }) {
   const [content, setContent] = useState();
   const [category, setCategory] = useState();
   const [date, setDate] = useState("");
+  const [picMessage, setPicMessage] = useState();
 
   const dispatch = useDispatch();
 
@@ -71,6 +72,19 @@ function SingleNote({ match, history }) {
     content: () => componentRef.current,
   });
 
+  var copied = false;
+
+  const share = () => {
+    const el = document.createElement('input');
+    el.value = 'https://themonospace.herokuapp.com/user/note/' + match.params.id;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    copied = true;
+    document.body.removeChild(el);
+    alert("A public link has been copied to your clipboard");
+  };
+
   return (
     <MainScreen title="Edit your article">
       <Card style={{ marginTop: '50px', marginBottom: '50px' }}>
@@ -88,10 +102,8 @@ function SingleNote({ match, history }) {
                 type="title"
                 value={title}
                 placeholder="Edit title"
-                onChange={(e) => setTitle(e.target.value)}
-              />
+                onChange={(e) => setTitle(e.target.value)} />
             </Form.Group>
-
             <Form.Group controlId="content" style={{ marginBottom: '20px' }}>
               <Form.Control
                 required
@@ -100,8 +112,7 @@ function SingleNote({ match, history }) {
                 value={content}
                 placeholder="Edit your spell"
                 rows={12}
-                onChange={(e) => setContent(e.target.value)}
-              />
+                onChange={(e) => setContent(e.target.value)} />
             </Form.Group>
             {content && (
               <Card className="text-center" style={{ marginBottom: '20px', marginTop: '20px' }}>
@@ -112,7 +123,6 @@ function SingleNote({ match, history }) {
                 </Card.Body>
               </Card>
             )}
-
             <Form.Group controlId="content" style={{ marginBottom: '20px' }}>
               <Form.Control
                 className="text-center"
@@ -120,13 +130,16 @@ function SingleNote({ match, history }) {
                 type="content"
                 value={category}
                 placeholder="Edit category"
-                onChange={(e) => setCategory(e.target.value)}
-              />
+                onChange={(e) => setCategory(e.target.value)} />
             </Form.Group>
             {loading && <Loading size={50} />}
-            <div style={{ marginTop: '50px', marginBottom: '20px' }}>
-              <Button className="mx-2" variant="outline-primary" type="submit">
-                Update Article
+            <Button className="mx-2" variant="outline-primary" type="submit">
+              Update Article
+            </Button>
+            <hr />
+            <div style={{ marginTop: '20px', marginBottom: '10px' }}>
+              <Button className="mx-2" variant="outline-primary" onClick={() => share()}>
+                Share
               </Button>
               <Button
                 variant="outline-primary"

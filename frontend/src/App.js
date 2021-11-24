@@ -12,6 +12,7 @@ import { useState } from "react";
 import ProfileScreen from "./screens/ProfileScreen/ProfileScreen";
 import About from "./screens/About";
 import NotFound from "./screens/NotFound";
+import Shared from "./screens/SingleNote/Shared";
 import { Switch } from 'react-router-dom';
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             )}
           />
           <Route path="/note/:id" exact component={SingleNote} />
+          <Route path="/user/note/:id" exact component={Shared} />
           <Route path="/about" exact component={About} />
           <Route path="/rules" exact component={Rules} />
           <Route path="/create" exact component={CreateNote} />
