@@ -30,3 +30,12 @@ code {
   background: rgb(70, 70, 70); 
 }
 
+::-moz-selection {
+  color: white;
+  background: black;
+}
+
+::selection {
+  color: white;
+  background: black;
+}
