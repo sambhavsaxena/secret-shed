@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import MainScreen from "../../components/MainScreen";
 import axios from "axios";
-import { Button, Card, Form, Alert } from "react-bootstrap";
+import { Button, Card, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteNoteAction, updateNoteAction } from "../../actions/notesActions";
 import ErrorMessage from "../../components/ErrorMessage";
@@ -14,7 +14,6 @@ function SingleNote({ match, history }) {
   const [content, setContent] = useState();
   const [category, setCategory] = useState();
   const [date, setDate] = useState("");
-  const [picMessage, setPicMessage] = useState();
 
   const dispatch = useDispatch();
 
@@ -72,15 +71,12 @@ function SingleNote({ match, history }) {
     content: () => componentRef.current,
   });
 
-  var copied = false;
-
   const share = () => {
     const el = document.createElement('input');
     el.value = 'https://themonospace.herokuapp.com/user/note/' + match.params.id;
     document.body.appendChild(el);
     el.select();
     document.execCommand('copy');
-    copied = true;
     document.body.removeChild(el);
     alert("A public link has been copied to your clipboard");
   };
