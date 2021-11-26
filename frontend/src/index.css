@@ -31,11 +31,11 @@ code {
 }
 
 ::-moz-selection {
-  color: white;
-  background: black;
+  color: black;
+  background: greenyellow;
 }
 
 ::selection {
-  color: white;
-  background: black;
+  color: black;
+  background: greenyellow;
 }
