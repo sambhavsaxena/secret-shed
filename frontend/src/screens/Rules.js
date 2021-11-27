@@ -32,6 +32,9 @@ const Rules = () => {
                     <ReactMarkdown>
                         8) You can include images by adding the image url (see point 3), hardcoded graphics are not allowed.
                     </ReactMarkdown>
+                    <ReactMarkdown>
+                        9) Adjust your images by adding width and height tags like so: `width="80%"`.
+                    </ReactMarkdown>
                 </Card.Body><br />
                 Consider visiting <a href="https://www.markdownguide.org/basic-syntax" rel="noreferrer" target="_blank">this</a> page for more info.
             </MainScreen>
