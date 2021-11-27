@@ -50,6 +50,15 @@ function RegisterScreen({ history }) {
   useEffect(() => {
     if (userInfo) {
       history.push("/myarticles");
+      toast.success('Sign in successful', {
+        position: "bottom-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   }, [history, userInfo]);
 
