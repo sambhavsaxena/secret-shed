@@ -15,25 +15,22 @@ const Rules = () => {
                         2) (`*`) to define the font weight. Enclose the text in asterisks to make it bold like so: `** bold **`.
                     </ReactMarkdown>
                     <ReactMarkdown>
-                        3) For adding links, write the link info like so: `[link title text](www.thelinkaddress.com)`.
+                        3) To add links, write the link info like so: `[link title text](www.thelinkaddress.com)`.
                     </ReactMarkdown>
                     <ReactMarkdown>
-                        4) Use single asterisk for italics, double for bold, as shown : (`*italic*`) and (`**bold**`).
+                        4) To add images, start with an exclamation mark `!`, and add the image url instead (see point 3).
                     </ReactMarkdown>
                     <ReactMarkdown>
-                        5) Use (`&gt;`) for writing a block-quote, while (`*** bold-italics ***`) for italicizing.
+                        5) Use single asterisk for italics, double for bold, as shown : (`*italic*`) and (`**bold**`).
                     </ReactMarkdown>
                     <ReactMarkdown>
-                        6) Use hyphen (`-`) for unordered lists, nested hyphens will create a nested list.
+                        6) Use (`&gt;`) for writing a block-quote, while (`*** bold-italics ***`) for italicizing.
                     </ReactMarkdown>
                     <ReactMarkdown>
-                        7) For horizontal lines, use hyphens like this: (`---`), which can be replaced by underscores (`___`).
+                        7) Use hyphen (`-`) for unordered lists, nested hyphens will create a nested list.
                     </ReactMarkdown>
                     <ReactMarkdown>
-                        8) You can include images by adding the image url (see point 3), hardcoded graphics are not allowed.
-                    </ReactMarkdown>
-                    <ReactMarkdown>
-                        9) Adjust your images by adding width and height tags like so: `width="80%"`.
+                        8) For horizontal lines, use hyphens like this: (`---`), which can be replaced by underscores (`___`).
                     </ReactMarkdown>
                 </Card.Body><br />
                 Consider visiting <a href="https://www.markdownguide.org/basic-syntax" rel="noreferrer" target="_blank">this</a> page for more info.
