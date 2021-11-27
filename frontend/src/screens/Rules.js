@@ -9,10 +9,10 @@ const Rules = () => {
             <MainScreen title="Rules for content markdown"><br /><br />
                 <Card.Body>
                     <ReactMarkdown>
-                        1) (`#`) to define the font size. More hashtags makes font size smaller. Used like this: `## Heading`
+                        1) (`#`) to define the font size. More hashtags makes font size smaller. Used like this: `## Heading`.
                     </ReactMarkdown>
                     <ReactMarkdown>
-                        2) (`*`) to define the font weight. Enclose the text in asterisks to make it bold like so: `** bold **`
+                        2) (`*`) to define the font weight. Enclose the text in asterisks to make it bold like so: `** bold **`.
                     </ReactMarkdown>
                     <ReactMarkdown>
                         3) For adding links, write the link info like so: `[link title text](www.thelinkaddress.com)`.
@@ -28,6 +28,9 @@ const Rules = () => {
                     </ReactMarkdown>
                     <ReactMarkdown>
                         7) For horizontal lines, use hyphens like this: (`---`), which can be replaced by underscores (`___`).
+                    </ReactMarkdown>
+                    <ReactMarkdown>
+                        8) You can include images by adding the image url (see point 3), hardcoded graphics are not allowed.
                     </ReactMarkdown>
                 </Card.Body><br />
                 Consider visiting <a href="https://www.markdownguide.org/basic-syntax" rel="noreferrer" target="_blank">this</a> page for more info.
