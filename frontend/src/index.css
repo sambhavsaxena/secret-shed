@@ -32,10 +32,10 @@ code {
 
 ::-moz-selection {
   color: black;
-  background: greenyellow;
+  background: grey;
 }
 
 ::selection {
   color: black;
-  background: greenyellow;
+  background: grey;
 }
