@@ -6,6 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateProfile } from "../../actions/userActions";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure()
 
 const ProfileScreen = ({ location, history }) => {
   const [name, setName] = useState("");
@@ -51,6 +55,15 @@ const ProfileScreen = ({ location, history }) => {
         .catch((err) => {
           console.log(err);
         });
+      toast.warn(`Image uploading`, {
+        position: "bottom-right",
+        autoClose: 6000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     } else {
       return setPicMessage("Please select an image");
     }
@@ -60,18 +73,50 @@ const ProfileScreen = ({ location, history }) => {
     e.preventDefault();
     if (password !== "") {
       if (password !== confirmPassword) {
-        return setPicMessage("Passwords do not match");
+        return toast.error('Passwords do not match!', {
+          position: "bottom-right",
+          autoClose: 4000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       }
       if (password.length < 6) {
-        return setPicMessage("Password must have over 6 characters");
+        return toast.error('Password must be over 6 characters', {
+          position: "bottom-right",
+          autoClose: 4000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       }
     }
     if (confirmPassword !== "") {
       if (confirmPassword !== password) {
-        return setPicMessage("Passwords do not match");
+        return toast.error(`Passwords do not match!`, {
+          position: "bottom-right",
+          autoClose: 4000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       }
       if (confirmPassword.length < 6) {
-        return setPicMessage("Password must have over 6 characters");
+        return toast.error('Password must be over 6 characters', {
+          position: "bottom-right",
+          autoClose: 4000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       }
     }
     dispatch(updateProfile({ name, email, password, pic }));

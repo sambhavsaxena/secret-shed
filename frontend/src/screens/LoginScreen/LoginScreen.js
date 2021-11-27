@@ -7,6 +7,10 @@ import ErrorMessage from "../../components/ErrorMessage";
 import { login } from "../../actions/userActions";
 import MainScreen from "../../components/MainScreen";
 import "./LoginScreen.css";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure()
 
 function LoginScreen({ history }) {
   const [email, setEmail] = useState("");
@@ -26,6 +30,15 @@ function LoginScreen({ history }) {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(login(email, password));
+    toast.success(`Sign in successful`, {
+      position: "bottom-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   return (

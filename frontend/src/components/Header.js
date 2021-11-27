@@ -27,7 +27,6 @@ function Header({ setSearch }) {
     <Navbar collapseOnSelect expand="lg" bg="light">
       <Container>
         <Navbar.Brand href="/">The monospace</Navbar.Brand>
-
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="m-auto">

@@ -7,6 +7,10 @@ import ErrorMessage from "../../components/ErrorMessage";
 import { register } from "../../actions/userActions";
 import MainScreen from "../../components/MainScreen";
 import "./RegisterScreen.css";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure()
 
 function RegisterScreen({ history }) {
   const [email, setEmail] = useState("");
@@ -16,7 +20,7 @@ function RegisterScreen({ history }) {
   );
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
-  const [message, setMessage] = useState(null);
+  const [message] = useState(null);
 
   const dispatch = useDispatch();
 
@@ -52,11 +56,27 @@ function RegisterScreen({ history }) {
   const submitHandler = (e) => {
     e.preventDefault();
     if (confirmpassword !== password) {
-      setMessage("Passwords do not match");
+      toast.error('Passwords do not match', {
+        position: "bottom-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       return;
     }
     if (password.length < 6) {
-      setMessage("Password must be over 6 characters");
+      toast.error(`Password must be over 6 characters`, {
+        position: "bottom-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
     else dispatch(register(name, email, password, pic));
   };

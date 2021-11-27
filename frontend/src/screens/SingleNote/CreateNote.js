@@ -6,6 +6,10 @@ import { createNoteAction } from "../../actions/notesActions";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
 import ReactMarkdown from "react-markdown";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure()
 
 function CreateNote({ history }) {
   const [title, setTitle] = useState("");
@@ -36,6 +40,15 @@ function CreateNote({ history }) {
     if (!title || !content || !category) return;
     resetHandler();
     history.push("/myarticles");
+    toast.success(`"${title}" created <3`, {
+      position: "bottom-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   useEffect(() => { }, []);

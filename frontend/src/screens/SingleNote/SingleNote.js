@@ -8,6 +8,10 @@ import ErrorMessage from "../../components/ErrorMessage";
 import Loading from "../../components/Loading";
 import ReactMarkdown from "react-markdown";
 import { useReactToPrint } from 'react-to-print';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure()
 
 function SingleNote({ match, history }) {
   const [title, setTitle] = useState();
@@ -30,6 +34,15 @@ function SingleNote({ match, history }) {
     if (window.confirm("Are you sure?")) {
       dispatch(deleteNoteAction(id));
       history.push("/myarticles");
+      toast.success(`"${title}" deleted!`, {
+        position: "bottom-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
     else {
       return
@@ -64,6 +77,15 @@ function SingleNote({ match, history }) {
     if (!title || !content || !category) return;
     resetHandler();
     history.push("/myarticles");
+    toast.success(`"${title}" updated!`, {
+      position: "bottom-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   const componentRef = useRef();
@@ -78,7 +100,15 @@ function SingleNote({ match, history }) {
     el.select();
     document.execCommand('copy');
     document.body.removeChild(el);
-    alert("A public link has been copied to your clipboard");
+    toast.success('Link copied to clipboard <3', {
+      position: "bottom-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   return (

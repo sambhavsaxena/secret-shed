@@ -7,6 +7,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteNoteAction, listNotes } from "../../actions/notesActions";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure()
 
 function MyNotes({ history, search }) {
   const dispatch = useDispatch();
@@ -46,6 +50,15 @@ function MyNotes({ history, search }) {
     if (window.confirm("Are you sure?")) {
       dispatch(deleteNoteAction(id));
       history.push("/myarticles");
+      toast.success(`Content deleted!`, {
+        position: "bottom-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
     else {
       return;
