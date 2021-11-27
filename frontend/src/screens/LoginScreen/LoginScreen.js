@@ -24,13 +24,7 @@ function LoginScreen({ history }) {
   useEffect(() => {
     if (userInfo) {
       history.push("/myarticles");
-    }
-  }, [history, userInfo]);
-
-  const submitHandler = (e) => {
-    e.preventDefault();
-    dispatch(login(email, password));
-    toast.success(`Sign in successful`, {
+      toast.success(`Sign in successful`, {
       position: "bottom-right",
       autoClose: 4000,
       hideProgressBar: false,
@@ -39,6 +33,12 @@ function LoginScreen({ history }) {
       draggable: true,
       progress: undefined,
     });
+    }
+  }, [history, userInfo]);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(login(email, password));
   };
 
   return (
