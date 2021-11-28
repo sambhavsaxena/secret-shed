@@ -10,6 +10,7 @@ For privacy policy, visit [this link](https://policiesofmonospace.netlify.app/).
 * **SHA-256 encrytped:** The content you post here will always be private, and will stay in encrypted form, using SHA-256 encryption algorithm. 
 * **Share notes with a public link:** After you've done editing your content, you can now share it with a single click. A public link will be created within moments.
 * **Encrypted pdfs:** The downloaded pdf is text secured, which makes it almost impossible for the text to be copied by anyone.
+* **Clean UI:** Visit the web app once, you're gonna love it <3.
 * **Store anything, write anywhere:** We don't make assumptions about anyone or anything, it simply is a waste of time and resources as we don't look to sell user data in order to gain huge amount of money, what many multinational organizations do openly, ruling the web.
 
 ## Installation
