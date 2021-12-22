@@ -55,7 +55,7 @@ const ProfileScreen = ({ location, history }) => {
         .catch((err) => {
           console.log(err);
         });
-      toast.warn(`Image uploading`, {
+      toast.warn(`Uploading image`, {
         position: "bottom-right",
         autoClose: 6000,
         hideProgressBar: false,
