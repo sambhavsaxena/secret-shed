@@ -42,7 +42,7 @@ function LoginScreen({ history }) {
   };
 
   return (
-    <MainScreen title="Get back to where you left">
+    <MainScreen title="Get back where you left">
       <div className="loginContainer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '140px' }}>
         {loading && <Loading />}
         {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
