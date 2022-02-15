@@ -24,6 +24,18 @@ React has been designed for gradual adoption from the start, and **you can use a
 2) cd ./frontend/ && npm i
 3) cd.. && npm run dev, already configured in [package.json](https://github.com/sambhavsaxena/TheMonospace-CloudBased/blob/main/package.json).
 
+### Common issue faced while installation
+
+'''
+node:internal/modules/cjs/loader:488
+      throw e;
+'''
+
+This could occur due to discrepencies with various versions of Node.
+
+How to fix: Delete the `package-lock.json` file and reinstall.
+
+Better fix: To containerize the repository with Node environment and pull using Docker.
 
 ## Documentation
 You can find the privacy policy [on this page](https://policiesofmonospace.netlify.app/).  
