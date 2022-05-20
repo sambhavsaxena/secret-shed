@@ -95,7 +95,7 @@ function SingleNote({ match, history }) {
 
   const share = () => {
     const el = document.createElement('input');
-    el.value = 'https://themonospace.herokuapp.com/user/note/' + match.params.id;
+    el.value = 'https://overhalted.herokuapp.com/user/note/' + match.params.id;
     document.body.appendChild(el);
     el.select();
     document.execCommand('copy');
