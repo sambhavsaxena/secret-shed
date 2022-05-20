@@ -152,7 +152,7 @@ function SingleNote({ match, history }) {
                 </Card.Body>
               </Card>
             )}
-            <Form.Group controlId="content" style={{ marginBottom: '20px' }}>
+            <Form.Group controlId="content" style={{ marginBottom: '18px' }}>
               <Form.Control
                 className="text-center"
                 required
