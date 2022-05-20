@@ -1,5 +1,6 @@
 {
   "name": "monospace",
+  "author": "Sambhav Saxena",
   "version": "1.0.0",
   "description": "Article publishing website",
   "main": "server.js",
