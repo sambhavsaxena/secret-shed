@@ -14,7 +14,7 @@ For privacy policy, visit [this link](https://policiesofmonospace.netlify.app/).
 
 ## Installation
 
-React has been designed for gradual adoption from the start, and **you can use as little or as much React as you need**:
+Follow the steps to install the application to your local machine**:
 
 * Fork and clone [this](https://github.com/sambhavsaxena/TheMonospace-CloudBased) repository make an instant copy of the content.
 * Alternatively, you can download the source and set it up with Github Desktop.
@@ -23,6 +23,10 @@ React has been designed for gradual adoption from the start, and **you can use a
 1) npm install
 2) cd ./frontend/ && npm i
 3) cd.. && npm run dev, already configured in [package.json](https://github.com/sambhavsaxena/TheMonospace-CloudBased/blob/main/package.json).
+
+
+* Set the environment variables from the mongoDB server configurations and configure your own password for verification through the database.
+* The environment variables can be located through CLI installation via NPM.
 
 ### Common issue faced while installation
 
