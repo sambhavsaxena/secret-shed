@@ -1,12 +1,13 @@
-
 .subtitle {
   font-size: 25px;
   padding-top: 10px;
 }
+
 .intro-text {
   width: 100%;
   text-align: center;
 }
+
 .main {
   min-height: 93vh;
   display: flex;
@@ -14,6 +15,7 @@
   background-position: center;
   background-size: cover;
 }
+
 .buttonContainer {
   margin-top: 50px;
   display: flex;
@@ -29,6 +31,7 @@
   .buttonContainer {
     padding: 0 200px;
   }
+
   .title {
     padding: 0 100px;
   }
@@ -38,6 +41,7 @@
   .title {
     font-size: 60px;
   }
+
   .landingbutton {
     width: 150px;
     height: 50px;
