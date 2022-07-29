@@ -3,7 +3,7 @@ import MainScreen from "../../components/MainScreen";
 import axios from "axios";
 import { Button, Card, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteNoteAction, updateNoteAction } from "../../actions/notesActions";
+import { deleteArticleAction, updateArticleAction } from "../../actions/articlesActions";
 import ErrorMessage from "../../components/ErrorMessage";
 import Loading from "../../components/Loading";
 import ReactMarkdown from "react-markdown";
@@ -13,7 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 toast.configure()
 
-function SingleNote({ match, history }) {
+function SingleArticle({ match, history }) {
   const [title, setTitle] = useState();
   const [content, setContent] = useState();
   const [category, setCategory] = useState();
@@ -24,15 +24,15 @@ function SingleNote({ match, history }) {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  const noteUpdate = useSelector((state) => state.noteUpdate);
-  const { loading, error } = noteUpdate;
+  const articleUpdate = useSelector((state) => state.articleUpdate);
+  const { loading, error } = articleUpdate;
 
-  const noteDelete = useSelector((state) => state.noteDelete);
-  const { loading: loadingDelete, error: errorDelete } = noteDelete;
+  const articleDelete = useSelector((state) => state.articleDelete);
+  const { loading: loadingDelete, error: errorDelete } = articleDelete;
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure?")) {
-      dispatch(deleteNoteAction(id));
+      dispatch(deleteArticleAction(id));
       history.push("/myarticles");
       toast.success(`"${title}" deleted!`, {
         position: "bottom-right",
@@ -55,7 +55,7 @@ function SingleNote({ match, history }) {
 
   useEffect(() => {
     const fetching = async () => {
-      const { data } = await axios.get(`/api/notes/${match.params.id}`);
+      const { data } = await axios.get(`/api/articles/${match.params.id}`);
       setTitle(data.title);
       setContent(data.content);
       setCategory(data.category);
@@ -73,7 +73,7 @@ function SingleNote({ match, history }) {
 
   const updateHandler = (e) => {
     e.preventDefault();
-    dispatch(updateNoteAction(match.params.id, title, content, category));
+    dispatch(updateArticleAction(match.params.id, title, content, category));
     if (!title || !content || !category) return;
     resetHandler();
     history.push("/myarticles");
@@ -95,7 +95,7 @@ function SingleNote({ match, history }) {
 
   const share = () => {
     const el = document.createElement('input');
-    el.value = 'https://overhalted.herokuapp.com/user/note/' + match.params.id;
+    el.value = 'https://overhalted.herokuapp.com/user/article/' + match.params.id;
     document.body.appendChild(el);
     el.select();
     document.execCommand('copy');
@@ -192,4 +192,4 @@ function SingleNote({ match, history }) {
   );
 }
 
-export default SingleNote;
+export default SingleArticle;

@@ -4,7 +4,7 @@ import MainScreen from "../../components/MainScreen";
 import { Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteNoteAction, listNotes } from "../../actions/notesActions";
+import { deleteArticleAction, listArticles } from "../../actions/articlesActions";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
 import { toast } from 'react-toastify';
@@ -12,28 +12,28 @@ import 'react-toastify/dist/ReactToastify.css';
 
 toast.configure()
 
-function MyNotes({ history, search }) {
+function MyArticles({ history, search }) {
   const dispatch = useDispatch();
-  const noteList = useSelector((state) => state.noteList);
-  const { loading, error, notes } = noteList;
+  const articleList = useSelector((state) => state.articleList);
+  const { loading, error, articles } = articleList;
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  const noteDelete = useSelector((state) => state.noteDelete);
+  const articleDelete = useSelector((state) => state.articleDelete);
   const {
     loading: loadingDelete,
     error: errorDelete,
     success: successDelete,
-  } = noteDelete;
+  } = articleDelete;
 
-  const noteCreate = useSelector((state) => state.noteCreate);
-  const { success: successCreate } = noteCreate;
+  const articleCreate = useSelector((state) => state.articleCreate);
+  const { success: successCreate } = articleCreate;
 
-  const noteUpdate = useSelector((state) => state.noteUpdate);
-  const { success: successUpdate } = noteUpdate;
+  const articleUpdate = useSelector((state) => state.articleUpdate);
+  const { success: successUpdate } = articleUpdate;
 
   useEffect(() => {
-    dispatch(listNotes());
+    dispatch(listArticles());
     if (!userInfo) {
       history.push("/");
     }
@@ -48,7 +48,7 @@ function MyNotes({ history, search }) {
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure?")) {
-      dispatch(deleteNoteAction(id));
+      dispatch(deleteArticleAction(id));
       history.push("/myarticles");
       toast.success(`Content deleted!`, {
         position: "bottom-right",
@@ -78,15 +78,15 @@ function MyNotes({ history, search }) {
       )}
       {loading && <Loading />}
       {loadingDelete && <Loading />}
-      {notes &&
-        notes
-          .filter((filteredNote) =>
-            filteredNote.title.toLowerCase().includes(search.toLowerCase())
+      {articles &&
+        articles
+          .filter((filteredArticle) =>
+            filteredArticle.title.toLowerCase().includes(search.toLowerCase())
           )
           .reverse()
-          .map((note) => (
+          .map((article) => (
             <Accordion>
-              <Card style={{ margin: 10 }} key={note._id}>
+              <Card style={{ margin: 10 }} key={article._id}>
                 <Card.Header style={{ display: "flex" }}>
                   <span
                     style={{
@@ -101,14 +101,14 @@ function MyNotes({ history, search }) {
                       as={Card.Text}
                       variant="link"
                       eventKey="0">
-                      {note.title}
+                      {article.title}
                     </Accordion.Toggle>
                   </span>
                   <div>
-                    <Button href={`/note/${note._id}`}>Edit</Button>
+                    <Button href={`/article/${article._id}`}>Edit</Button>
                     <Button
                       className="mx-2"
-                      onClick={() => deleteHandler(note._id)}
+                      onClick={() => deleteHandler(article._id)}
                     >
                       Delete
                     </Button>
@@ -117,11 +117,11 @@ function MyNotes({ history, search }) {
                 <Accordion.Collapse eventKey="0">
                   <Card.Body>
                     <blockquote className="blockquote mb-0">
-                      <ReactMarkdown className="text-center" style={{ fontSize: '12px' }}>{note.content}</ReactMarkdown>
+                      <ReactMarkdown className="text-center" style={{ fontSize: '12px' }}>{article.content}</ReactMarkdown>
                       <footer className="blockquote-footer text-center" style={{ marginTop: '20px' }}>
                         Created:{" "}
                         <cite title="Source Title">
-                          {note.createdAt.substring(0, 10)}
+                          {article.createdAt.substring(0, 10)}
                         </cite>
                       </footer>
                     </blockquote>
@@ -134,4 +134,4 @@ function MyNotes({ history, search }) {
   );
 }
 
-export default MyNotes;
+export default MyArticles;

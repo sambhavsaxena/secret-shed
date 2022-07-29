@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import MainScreen from "../../components/MainScreen";
 import { Button, Card, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { createNoteAction } from "../../actions/notesActions";
+import { createArticleAction } from "../../actions/articlesActions";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
 import ReactMarkdown from "react-markdown";
@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 toast.configure()
 
-function CreateNote({ history }) {
+function CreateArticle({ history }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [category, setCategory] = useState("");
@@ -25,8 +25,8 @@ function CreateNote({ history }) {
 
   const dispatch = useDispatch();
 
-  const noteCreate = useSelector((state) => state.noteCreate);
-  const { loading, error } = noteCreate;
+  const articleCreate = useSelector((state) => state.articleCreate);
+  const { loading, error } = articleCreate;
 
   const resetHandler = () => {
     setTitle("");
@@ -36,7 +36,7 @@ function CreateNote({ history }) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(createNoteAction(title, content, category));
+    dispatch(createArticleAction(title, content, category));
     if (!title || !content || !category) return;
     resetHandler();
     history.push("/myarticles");
@@ -65,7 +65,7 @@ function CreateNote({ history }) {
                 className="text-center"
                 type="title"
                 value={title}
-                placeholder="Give it a title"
+                placeholder="Give a title"
                 onChange={(e) => setTitle(e.target.value)}
               />
             </Form.Group>
@@ -76,7 +76,7 @@ function CreateNote({ history }) {
                 className="text-center"
                 as="textarea"
                 value={content}
-                placeholder="Fill it up with magic"
+                placeholder="Fill up with magic"
                 rows={12}
                 onChange={(e) => setContent(e.target.value)}
               />
@@ -97,7 +97,7 @@ function CreateNote({ history }) {
                 required
                 type="content"
                 value={category}
-                placeholder="Give it a category"
+                placeholder="Specify a category"
                 onChange={(e) => setCategory(e.target.value)}
               />
             </Form.Group>
@@ -121,4 +121,4 @@ function CreateNote({ history }) {
   );
 }
 
-export default CreateNote;
+export default CreateArticle;

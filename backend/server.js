@@ -2,7 +2,7 @@ import express from "express"
 import dotenv from "dotenv"
 import connectDB from "./config/db.js"
 import path from "path"
-import noteRoutes from "./routes/noteRoutes.js"
+import articleRoutes from "./routes/articleRoutes.js"
 import userRoutes from "./routes/userRoutes.js"
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js"
 
@@ -11,7 +11,7 @@ connectDB()
 const app = express()
 
 app.use(express.json())
-app.use("/api/notes", noteRoutes)
+app.use("/api/articles", articleRoutes)
 app.use("/api/users", userRoutes)
 
 const __dirname = path.resolve()

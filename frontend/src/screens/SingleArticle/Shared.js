@@ -11,7 +11,7 @@ function Shared({ match }) {
 
     useEffect(() => {
         const fetching = async () => {
-            const { data } = await axios.get(`/api/notes/${match.params.id}`);
+            const { data } = await axios.get(`/api/articles/${match.params.id}`);
             setTitle(data.title);
             setContent(data.content);
         };

@@ -33,7 +33,7 @@ const Rules = () => {
                         8) For horizontal lines, use hyphens like this: (`---`), which can be replaced by underscores (`___`).
                     </ReactMarkdown>
                 </Card.Body><br />
-                Consider visiting <a href="https://www.markdownguide.org/basic-syntax" rel="noreferrer" target="_blank">this</a> page for more info.
+                Consider visiting <a href="https://www.markdownguide.org/basic-syntax" rel="noreferrer noopener" target="_blank">this</a> page for more info.
             </MainScreen>
         </div>
     )

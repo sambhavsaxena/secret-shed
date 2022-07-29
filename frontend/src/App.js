@@ -1,23 +1,23 @@
+import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import LandingPage from "./screens/LandingPage/LandingPage";
-import MyNotes from "./screens/MyNotes/MyNotes";
+import MyArticles from "./screens/MyArticles/MyArticles";
 import Rules from "./screens/Rules"
-import SingleNote from "./screens/SingleNote/SingleNote";
+import SingleArticle from "./screens/SingleArticle/SingleArticle";
 import LoginScreen from "./screens/LoginScreen/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen/RegisterScreen";
-import CreateNote from "./screens/SingleNote/CreateNote";
+import CreateArticle from "./screens/SingleArticle/CreateArticle";
 import { useState } from "react";
 import ProfileScreen from "./screens/ProfileScreen/ProfileScreen";
 import About from "./screens/About";
 import NotFound from "./screens/NotFound";
-import Shared from "./screens/SingleNote/Shared";
+import Shared from "./screens/SingleArticle/Shared";
 import { Switch } from 'react-router-dom';
 
 function App() {
   const [search, setSearch] = useState("");
-
   return (
     <Router>
       <Header setSearch={(s) => setSearch(s)} />
@@ -28,15 +28,13 @@ function App() {
           <Route path="/signup" exact component={RegisterScreen} />
           <Route
             path="/myarticles" exact
-            component={({ history }) => (
-              <MyNotes search={search} history={history} />
-            )}
+            component={({ history }) => (<MyArticles search={search} history={history} />)}
           />
-          <Route path="/note/:id" exact component={SingleNote} />
-          <Route path="/user/note/:id" exact component={Shared} />
+          <Route path="/article/:id" exact component={SingleArticle} />
+          <Route path="/user/article/:id" exact component={Shared} />
           <Route path="/about" exact component={About} />
           <Route path="/rules" exact component={Rules} />
-          <Route path="/create" exact component={CreateNote} />
+          <Route path="/create" exact component={CreateArticle} />
           <Route path="/profile" exact component={ProfileScreen} />
           <Route path="/*" component={NotFound} />
         </Switch>
@@ -47,5 +45,3 @@ function App() {
 }
 
 export default App;
-
-//Create '.env' on the root directory and add environment variables to it from 'envars.cs'.

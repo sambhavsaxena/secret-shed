@@ -1,23 +1,23 @@
 import dotenv from "dotenv"
 import users from "./data/users.js"
-import notes from "./data/notes.js"
+import articles from "./data/articles.js"
 import User from "./models/userModel.js"
-import Note from "./models/noteModel.js"
+import Article from "./models/articleModel.js"
 import connectDB from "./config/db.js"
 
 dotenv.config()
 connectDB()
 const importData = async () => {
   try {
-    await Note.deleteMany()
+    await Article.deleteMany()
     await User.deleteMany()
     const createdUsers = await User.insertMany(users)
     const adminUser = createdUsers[0]._id
-    const sampleNotes = notes.map((note) => {
-      return { ...note, user: adminUser }
+    const sampleArticles = articles.map((article) => {
+      return { ...article, user: adminUser }
     })
 
-    await Note.insertMany(sampleNotes)
+    await Article.insertMany(sampleArticles)
     console.log("Data Imported!")
     process.exit()
   } catch (error) {
@@ -28,7 +28,7 @@ const importData = async () => {
 
 const destroyData = async () => {
   try {
-    await Note.deleteMany()
+    await Article.deleteMany()
     await User.deleteMany()
     console.log("Data Destroyed!")
     process.exit()
