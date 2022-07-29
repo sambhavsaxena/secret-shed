@@ -1,4 +1,4 @@
-# [The Monospace](https://themonospace.herokuapp.com/myarticles) | [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/main/LICENSE) |  [![npm version](https://img.shields.io/npm/v/react.svg?style=flat)](https://www.npmjs.com/package/react) | [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/sambhavsaxena/TheMonospace-CloudBased)
+g-# [The Monospace](https://themonospace.herokuapp.com/myarticles) | [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/main/LICENSE) |  [![npm version](https://img.shields.io/npm/v/react.svg?style=flat)](https://www.npmjs.com/package/react) | [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/sambhavsaxena/TheMonospace-CloudBased)
 
 The Monospace is a minimalistic blog web app, which can be used for wide range of purposes including keeping secrets.
 Because of its privacy-related liberations, we keep the user information encrypted. 
@@ -11,6 +11,9 @@ For privacy policy, visit [this link](https://policiesofmonospace.netlify.app/).
 * **Encrypted pdfs:** The downloaded pdf is text secured, which makes it almost impossible for the text to be copied by anyone.
 * **Clean UI:** Visit the web app once, you're gonna love it <3.
 * **Store anything, write anywhere:** We don't make assumptions about anyone or anything, it simply is a waste of time and resources as we don't look to sell user data in order to gain huge amount of money, what many multinational organizations do openly, ruling the web.
+
+![image](https://user-images.githubusercontent.com/76242518/181814189-208f8e0d-91d7-4ef2-8d9a-17b233737782.png)
+
 
 ## Installation
 
