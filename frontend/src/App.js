@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import LandingPage from "./screens/LandingPage/LandingPage";
 import MyArticles from "./screens/MyArticles/MyArticles";
 import Rules from "./screens/Rules"
+import All from "./screens/All";
 import SingleArticle from "./screens/SingleArticle/SingleArticle";
 import LoginScreen from "./screens/LoginScreen/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen/RegisterScreen";
@@ -23,7 +24,8 @@ function App() {
       <Header setSearch={(s) => setSearch(s)} />
       <main className="App">
         <Switch>
-          <Route path="/" component={LandingPage} exact />
+          <Route path="/sign" component={LandingPage} exact />
+          <Route path="/" component={All} exact />
           <Route path="/signin" exact component={LoginScreen} />
           <Route path="/signup" exact component={RegisterScreen} />
           <Route
@@ -31,7 +33,7 @@ function App() {
             component={({ history }) => (<MyArticles search={search} history={history} />)}
           />
           <Route path="/article/:id" exact component={SingleArticle} />
-          <Route path="/user/article/:id" exact component={Shared} />
+          <Route path="/articles/:id" exact component={Shared} />
           <Route path="/about" exact component={About} />
           <Route path="/rules" exact component={Rules} />
           <Route path="/create" exact component={CreateArticle} />

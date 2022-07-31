@@ -4,6 +4,10 @@ import axios from "axios"
 import { Button, Card } from "react-bootstrap"
 import ReactMarkdown from "react-markdown"
 import { useReactToPrint } from 'react-to-print'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure()
 
 function Shared({ match }) {
     const [title, setTitle] = useState();
@@ -23,6 +27,24 @@ function Shared({ match }) {
         content: () => componentRef.current,
     });
 
+    const share = () => {
+        const el = document.createElement('input');
+        el.value = window.location.href;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        toast.success('Link copied to clipboard <3', {
+            position: "bottom-right",
+            autoClose: 4000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    };
+
     return (
         <MainScreen title="">
             <Card.Body>
@@ -36,6 +58,11 @@ function Shared({ match }) {
                     </Card>
                 )}
                 <div style={{ marginTop: '50px', marginBottom: '20px' }}>
+                    <Button
+                        variant="outline-primary"
+                        className="mx-2"
+                        onClick={() => share()}
+                    >Share link</Button>
                     <Button
                         variant="outline-primary"
                         className="mx-2"

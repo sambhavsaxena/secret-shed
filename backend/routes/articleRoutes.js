@@ -11,6 +11,7 @@ import { protect } from "../middleware/authMiddleware.js"
 
 const router = express.Router()
 router.route("/").get(protect, getArticles)
+router.route("/all").get(getAll)
 router
   .route("/:id")
   .get(getArticleById)

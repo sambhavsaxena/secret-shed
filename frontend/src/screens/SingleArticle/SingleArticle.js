@@ -56,10 +56,29 @@ function SingleArticle({ match, history }) {
   useEffect(() => {
     const fetching = async () => {
       const { data } = await axios.get(`/api/articles/${match.params.id}`);
-      setTitle(data.title);
-      setContent(data.content);
-      setCategory(data.category);
-      setDate(data.updatedAt);
+      if (userInfo) {
+        if (data.user === userInfo._id) {
+          setTitle(data.title);
+          setContent(data.content);
+          setCategory(data.category);
+          setDate(data.updatedAt);
+        }
+        else {
+          history.push("/");
+          toast.error(`"Unautheticated request!"`, {
+            position: "bottom-right",
+            autoClose: 4000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      }
+      else {
+        history.push("/");
+      }
     };
 
     fetching();
@@ -94,13 +113,13 @@ function SingleArticle({ match, history }) {
   });
 
   const share = () => {
-    const el = document.createElement('input');
-    el.value = 'https://overhalted.herokuapp.com/user/article/' + match.params.id;
-    document.body.appendChild(el);
-    el.select();
+    const sharelink = document.createElement('input');
+    sharelink.value = window.location.host + window.location.pathname.slice(0, 8) + "s/" + match.params.id;
+    document.body.appendChild(sharelink);
+    sharelink.select();
     document.execCommand('copy');
-    document.body.removeChild(el);
-    toast.success('Link copied to clipboard <3', {
+    document.body.removeChild(sharelink);
+    toast.success('Link copied to clipboard', {
       position: "bottom-right",
       autoClose: 4000,
       hideProgressBar: false,
@@ -162,19 +181,21 @@ function SingleArticle({ match, history }) {
                 onChange={(e) => setCategory(e.target.value)} />
             </Form.Group>
             {loading && <Loading size={50} />}
-            <Button className="mx-2" variant="outline-primary" type="submit">
-              Update Article
-            </Button>
             <hr />
             <div style={{ marginTop: '20px', marginBottom: '10px' }}>
-              <Button className="mx-2" variant="outline-primary" onClick={() => share()}>
-                Share
-              </Button>
+              <Button
+                variant="outline-primary"
+                className="mx-2"
+                onClick={() => share()}
+              >Share link</Button>
               <Button
                 variant="outline-primary"
                 className="mx-2"
                 onClick={() => getPDF()}
               >Save as pdf</Button>
+              <Button className="mx-2" variant="outline-primary" type="submit">
+                Update Article
+              </Button>
               <Button
                 className="mx-2"
                 variant="outline-primary"

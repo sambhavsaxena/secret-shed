@@ -20,8 +20,8 @@ function LandingPage({ history }) {
         <Row>
           <div className="intro-text">
             <div>
-              <h2 className="title">the monospace</h2>
-              <p className="subtitle">Keep your thoughts safe and sorted on the go</p>
+              <h2 className="title">ikigai</h2>
+              <p className="subtitle">Write and share your love with people</p>
             </div>
             <div className="buttonContainer">
               <Link to="/signin">

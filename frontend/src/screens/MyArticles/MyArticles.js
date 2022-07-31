@@ -85,8 +85,8 @@ function MyArticles({ history, search }) {
           )
           .reverse()
           .map((article) => (
-            <Accordion>
-              <Card style={{ margin: 10 }} key={article._id}>
+            <Accordion key={article._id}>
+              <Card style={{ margin: 10 }} >
                 <Card.Header style={{ display: "flex" }}>
                   <span
                     style={{
@@ -129,8 +129,9 @@ function MyArticles({ history, search }) {
                 </Accordion.Collapse>
               </Card>
             </Accordion>
-          ))}
-    </MainScreen>
+          ))
+      }
+    </MainScreen >
   );
 }
 

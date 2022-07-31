@@ -16,7 +16,7 @@ const Footer = () => {
     >
       <Container style={{ marginBottom: '20px' }}>
         <Row>
-          <Col className="text-center"> The Monospace  &copy; {year} | By <a style={{ textDecoration: 'none' }} href={weblink} target="_blank" rel="noopener noreferrer"><strong>Sambhav Saxena</strong></a></Col>
+          <Col className="text-center"> IKIGAI  &copy; {year} | By <a style={{ textDecoration: 'none' }} href={weblink} target="_blank" rel="noopener noreferrer"><strong>Sambhav Saxena</strong></a></Col>
         </Row>
       </Container>
     </footer>

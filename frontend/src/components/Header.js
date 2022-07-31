@@ -26,12 +26,12 @@ function Header({ setSearch }) {
   return (
     <Navbar collapseOnSelect expand="lg" bg="light">
       <Container>
-        <Navbar.Brand href="/">The monospace</Navbar.Brand>
+        <Navbar.Brand href="/">IKIGAI</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="m-auto">
+          <Nav className="m-auto" >
             {userInfo && (
-              <Form inline>
+              <Form inline style={{ marginLeft: '130px' }}>
                 <FormControl
                   type="text"
                   placeholder="Find article"
@@ -44,7 +44,7 @@ function Header({ setSearch }) {
           <Nav>
             {userInfo ? (
               <>
-                <Nav.Link href="/myarticles">Home</Nav.Link>
+                <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/about">About</Nav.Link>
                 <NavDropdown
                   title="USER"
@@ -61,6 +61,10 @@ function Header({ setSearch }) {
                     {`${userInfo.name}`}
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
+                  <NavDropdown.Item className="text-center" href="/myarticles">
+                    My work
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
                   <NavDropdown.Item className="text-center" href="/rules">
                     Rules
                   </NavDropdown.Item>
@@ -74,6 +78,7 @@ function Header({ setSearch }) {
               <>
                 <Nav.Link href="/rules">Rules</Nav.Link>
                 <Nav.Link href="/about">About</Nav.Link>
+                <Nav.Link href="/sign">Sign</Nav.Link>
               </>
             )}
           </Nav>
