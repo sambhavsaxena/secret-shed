@@ -13,7 +13,7 @@ For privacy policy, visit [this link](https://policiesofikigai.netlify.app/).
 * **Full markdown support:** Write and engage in markdown, just like all other blog sharing websites.
 
 
-![image](https://user-images.githubusercontent.com/76242518/181814189-208f8e0d-91d7-4ef2-8d9a-17b233737782.png)
+![image](https://user-images.githubusercontent.com/76242518/182047217-fc5ea1f3-f21f-4712-8dfa-51fdbe90d72b.png)
 
 
 ## Installation
