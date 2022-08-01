@@ -25,12 +25,15 @@ function App() {
       <main className="App">
         <Switch>
           <Route path="/sign" component={LandingPage} exact />
-          <Route path="/" component={All} exact />
           <Route path="/signin" exact component={LoginScreen} />
           <Route path="/signup" exact component={RegisterScreen} />
           <Route
             path="/myarticles" exact
             component={({ history }) => (<MyArticles search={search} history={history} />)}
+          />
+          <Route
+            path="/" exact
+            component={() => (<All search={search} />)}
           />
           <Route path="/article/:id" exact component={SingleArticle} />
           <Route path="/articles/:id" exact component={Shared} />

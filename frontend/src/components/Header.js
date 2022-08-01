@@ -56,13 +56,13 @@ function Header({ setSearch }) {
                       src={`${userInfo.pic}`}
                       width="25"
                       height="25"
-                      style={{ marginRight: '5px' }}
+                      style={{ marginRight: '5px', borderRadius: '50%' }}
                     />
                     {`${userInfo.name}`}
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item className="text-center" href="/myarticles">
-                    My work
+                    My articles
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item className="text-center" href="/rules">

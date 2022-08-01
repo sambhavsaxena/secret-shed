@@ -81,7 +81,7 @@ function MyArticles({ history, search }) {
       {articles &&
         articles
           .filter((filteredArticle) =>
-            filteredArticle.title.toLowerCase().includes(search.toLowerCase())
+            filteredArticle.title.toLowerCase().includes(search.toLowerCase()) || filteredArticle.category.toLowerCase().includes(search.toLowerCase())
           )
           .reverse()
           .map((article) => (

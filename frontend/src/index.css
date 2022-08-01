@@ -19,15 +19,15 @@ code {
 }
 
 ::-webkit-scrollbar-track {
-  background: #ffffff; 
+  background: #ffffff;
 }
- 
+
 ::-webkit-scrollbar-thumb {
-  background: rgb(54, 54, 54); 
+  background: rgb(54, 54, 54);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(70, 70, 70); 
+  background: rgb(70, 70, 70);
 }
 
 ::-moz-selection {
