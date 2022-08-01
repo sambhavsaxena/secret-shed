@@ -12,6 +12,7 @@ import RegisterScreen from "./screens/RegisterScreen/RegisterScreen";
 import CreateArticle from "./screens/SingleArticle/CreateArticle";
 import { useState } from "react";
 import ProfileScreen from "./screens/ProfileScreen/ProfileScreen";
+import Password from "./screens/ProfileScreen/Password";
 import About from "./screens/About";
 import NotFound from "./screens/NotFound";
 import Shared from "./screens/SingleArticle/Shared";
@@ -35,6 +36,7 @@ function App() {
             path="/" exact
             component={() => (<All search={search} />)}
           />
+          <Route path="/resetpassword" exact component={Password} />
           <Route path="/article/:id" exact component={SingleArticle} />
           <Route path="/articles/:id" exact component={Shared} />
           <Route path="/about" exact component={About} />

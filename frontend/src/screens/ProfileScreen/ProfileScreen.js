@@ -11,13 +11,10 @@ import 'react-toastify/dist/ReactToastify.css';
 
 toast.configure()
 
-const ProfileScreen = ({ location, history }) => {
+const ProfileScreen = ({ history }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [pic, setPic] = useState();
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [picMessage, setPicMessage] = useState();
 
   const dispatch = useDispatch();
 
@@ -38,7 +35,6 @@ const ProfileScreen = ({ location, history }) => {
   }, [history, userInfo]);
 
   const postDetails = (pics) => {
-    setPicMessage(null);
     if (pics.type === "image/jpeg" || pics.type === "image/png") {
       const data = new FormData();
       data.append("file", pics);
@@ -55,71 +51,21 @@ const ProfileScreen = ({ location, history }) => {
         .catch((err) => {
           console.log(err);
         });
-      toast.warn(`Uploading image`, {
+      toast.warn(`Uploading image...`, {
         position: "bottom-right",
-        autoClose: 6000,
+        autoClose: 4000,
         hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: false,
         progress: undefined,
       });
-    } else {
-      return setPicMessage("Please select an image");
     }
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (password !== "") {
-      if (password !== confirmPassword) {
-        return toast.error('Passwords do not match!', {
-          position: "bottom-right",
-          autoClose: 4000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      }
-      if (password.length < 6) {
-        return toast.error('Password must be over 6 characters', {
-          position: "bottom-right",
-          autoClose: 4000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      }
-    }
-    if (confirmPassword !== "") {
-      if (confirmPassword !== password) {
-        return toast.error(`Passwords do not match!`, {
-          position: "bottom-right",
-          autoClose: 4000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      }
-      if (confirmPassword.length < 6) {
-        return toast.error('Password must be over 6 characters', {
-          position: "bottom-right",
-          autoClose: 4000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      }
-    }
-    dispatch(updateProfile({ name, email, password, pic }));
+    dispatch(updateProfile({ name, email, pic }));
   };
 
   return (
@@ -132,9 +78,6 @@ const ProfileScreen = ({ location, history }) => {
                 {loading && <Loading />}
                 {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
                 {success && <ErrorMessage variant="success">Updated successfully</ErrorMessage>}
-                {picMessage && (
-                  <ErrorMessage variant="danger">{picMessage}</ErrorMessage>
-                )}
                 <Form.Control
                   required
                   className="text-center"
@@ -154,29 +97,12 @@ const ProfileScreen = ({ location, history }) => {
                   onChange={(e) => setEmail(e.target.value)}
                 ></Form.Control>
               </Form.Group>
-              <Form.Group controlId="password" style={{ marginBottom: '20px', width: '500px', textAlign: 'center' }}>
-                <Form.Control
-                  className="text-center"
-                  type="password"
-                  placeholder="Enter new password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                ></Form.Control>
-              </Form.Group>
-              <Form.Group controlId="confirmPassword" style={{ marginBottom: '20px', width: '500px', textAlign: 'center' }}>
-                <Form.Control
-                  className="text-center"
-                  type="password"
-                  placeholder="Confirm password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                ></Form.Control>
-              </Form.Group>{" "}
               <Form.Group controlId="pic" style={{ marginBottom: '20px', width: '500px', textAlign: 'center' }}>
                 <Form.File
                   onChange={(e) => postDetails(e.target.files[0])}
                   id="custom-file"
                   type="image/png"
+                  accept="image/png, image/jpeg, image/jpg"
                   label="Upload a new picture"
                   custom
                 />
@@ -184,6 +110,9 @@ const ProfileScreen = ({ location, history }) => {
               <Form.Group style={{ marginBottom: '20px', width: '500px', textAlign: 'center' }}>
                 <Button type="submit" varient="primary">
                   Update
+                </Button> <br />
+                <Button href="/resetpassword" varient="primary" style={{ marginTop: '20px' }}>
+                  Change password
                 </Button>
               </Form.Group>
             </Form>
@@ -199,7 +128,7 @@ const ProfileScreen = ({ location, history }) => {
           </Col>
         </Row>
       </div>
-    </MainScreen>
+    </MainScreen >
   );
 };
 
