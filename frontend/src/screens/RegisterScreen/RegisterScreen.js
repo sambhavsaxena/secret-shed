@@ -49,7 +49,7 @@ function RegisterScreen({ history }) {
 
   useEffect(() => {
     if (userInfo) {
-      history.push("/myarticles");
+      history.push("/");
       toast.success('Sign in successful', {
         position: "bottom-right",
         autoClose: 4000,
@@ -91,7 +91,7 @@ function RegisterScreen({ history }) {
   };
 
   return (
-    <MainScreen title="share your love with words">
+    <MainScreen title="share your love for words">
       <div className="loginContainer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '50px' }}>
         {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
         {message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
