@@ -33,8 +33,12 @@ function Shared({ match }) {
     });
 
     const share = () => {
-        const sharelink = window.location.href;
-        navigator.clipboard.writeText(sharelink)
+        const el = document.createElement('input');
+        el.value = window.location.href;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
         toast.success('Link copied to clipboard', {
             position: "bottom-right",
             autoClose: 3000,
