@@ -116,8 +116,12 @@ function SingleArticle({ match, history }) {
   });
 
   const share = () => {
-    const sharelink = window.location.host + window.location.pathname.slice(0, 8) + "s/" + match.params.id;
-    navigator.clipboard.writeText(sharelink)
+    const sharelink = document.createElement('input');
+    sharelink.value = window.location.host + window.location.pathname.slice(0, 8) + "s/" + match.params.id;
+    document.body.appendChild(sharelink);
+    sharelink.select();
+    document.execCommand('copy');
+    document.body.removeChild(sharelink);
     toast.success('Link copied to clipboard', {
       position: "bottom-right",
       autoClose: 3000,
