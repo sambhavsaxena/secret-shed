@@ -18,6 +18,7 @@ function SingleArticle({ match, history }) {
   const [content, setContent] = useState();
   const [category, setCategory] = useState();
   const [date, setDate] = useState("");
+  const [loadinganim, setLoadinganim] = useState();
 
   const dispatch = useDispatch();
 
@@ -34,9 +35,9 @@ function SingleArticle({ match, history }) {
     if (window.confirm("Are you sure?")) {
       dispatch(deleteArticleAction(id));
       history.push("/myarticles");
-      toast.success(`"${title}" deleted!`, {
+      toast.success(`"${title}" deleted`, {
         position: "bottom-right",
-        autoClose: 4000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -54,6 +55,7 @@ function SingleArticle({ match, history }) {
   }
 
   useEffect(() => {
+    setLoadinganim(true);
     const fetching = async () => {
       const { data } = await axios.get(`/api/articles/${match.params.id}`);
       if (userInfo) {
@@ -62,12 +64,13 @@ function SingleArticle({ match, history }) {
           setContent(data.content);
           setCategory(data.category);
           setDate(data.updatedAt);
+          setLoadinganim(false);
         }
         else {
           history.push("/");
           toast.error(`"Unautheticated request!"`, {
             position: "bottom-right",
-            autoClose: 4000,
+            autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -98,7 +101,7 @@ function SingleArticle({ match, history }) {
     history.push("/myarticles");
     toast.success(`"${title}" updated!`, {
       position: "bottom-right",
-      autoClose: 4000,
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -121,7 +124,7 @@ function SingleArticle({ match, history }) {
     document.body.removeChild(sharelink);
     toast.success('Link copied to clipboard', {
       position: "bottom-right",
-      autoClose: 4000,
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -132,83 +135,86 @@ function SingleArticle({ match, history }) {
 
   return (
     <MainScreen title="Edit your article">
-      <Card style={{ marginTop: '50px', marginBottom: '50px' }}>
-        <Card.Body>
-          <Form onSubmit={updateHandler}>
-            {loadingDelete && <Loading />}
-            {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
-            {errorDelete && (
-              <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>
-            )}
-            <Form.Group controlId="title" style={{ marginBottom: '20px' }}>
-              <Form.Control
-                required
-                className="text-center"
-                type="title"
-                value={title}
-                placeholder="Edit title"
-                onChange={(e) => setTitle(e.target.value)} />
-            </Form.Group>
-            <Form.Group controlId="content" style={{ marginBottom: '20px' }}>
-              <Form.Control
-                required
-                className="text-center"
-                as="textarea"
-                value={content}
-                placeholder="Edit your spell"
-                rows={12}
-                onChange={(e) => setContent(e.target.value)} />
-            </Form.Group>
-            {content && (
-              <Card className="text-center" style={{ marginBottom: '20px', marginTop: '20px' }}>
-                <Card.Header>Article preview</Card.Header>
-                <Card.Body ref={componentRef}>
-                  <strong><div className="text-center" style={{ fontSize: '24px', marginTop: '20px', marginBottom: '20px' }}>{title}</div></strong>
-                  <ReactMarkdown>---</ReactMarkdown>
-                  <ReactMarkdown className="text-center" style={{ fontSize: '12px' }}>
-                    {content}
-                  </ReactMarkdown>
-                </Card.Body>
-              </Card>
-            )}
-            <Form.Group controlId="content" style={{ marginBottom: '18px' }}>
-              <Form.Control
-                className="text-center"
-                required
-                type="content"
-                value={category}
-                placeholder="Edit category"
-                onChange={(e) => setCategory(e.target.value)} />
-            </Form.Group>
-            {loading && <Loading size={50} />}
-            <hr />
-            <div style={{ marginTop: '20px', marginBottom: '10px' }}>
-              <Button
-                variant="outline-primary"
-                className="mx-2"
-                onClick={() => share()}
-              >Share link</Button>
-              <Button
-                variant="outline-primary"
-                className="mx-2"
-                onClick={() => getPDF()}
-              >Save as pdf</Button>
-              <Button className="mx-2" variant="outline-primary" type="submit">
-                Update Article
-              </Button>
-              <Button
-                className="mx-2"
-                variant="outline-primary"
-                onClick={() => deleteHandler(match.params.id)}>
-                Delete
-              </Button>
-            </div>
-          </Form>
-        </Card.Body>
-        <Card.Footer className="text-muted">
-          {new Date().toLocaleTimeString()} | {new Date().toLocaleDateString()}
-        </Card.Footer>
-      </Card>
+      {
+        loadinganim ? <Loading /> :
+          <Card style={{ marginTop: '50px', marginBottom: '50px' }}>
+            <Card.Body>
+              <Form onSubmit={updateHandler}>
+                {loadingDelete && <Loading />}
+                {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+                {errorDelete && (
+                  <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>
+                )}
+                <Form.Group controlId="title" style={{ marginBottom: '20px' }}>
+                  <Form.Control
+                    required
+                    className="text-center"
+                    type="title"
+                    value={title}
+                    placeholder="Edit title"
+                    onChange={(e) => setTitle(e.target.value)} />
+                </Form.Group>
+                <Form.Group controlId="content" style={{ marginBottom: '20px' }}>
+                  <Form.Control
+                    required
+                    className="text-center"
+                    as="textarea"
+                    value={content}
+                    placeholder="Edit your spell"
+                    rows={12}
+                    onChange={(e) => setContent(e.target.value)} />
+                </Form.Group>
+                {content && (
+                  <Card className="text-center" style={{ marginBottom: '20px', marginTop: '20px' }}>
+                    <Card.Header>Article preview</Card.Header>
+                    <Card.Body ref={componentRef}>
+                      <strong><div className="text-center" style={{ fontSize: '24px', marginTop: '20px', marginBottom: '20px' }}>{title}</div></strong>
+                      <ReactMarkdown>---</ReactMarkdown>
+                      <ReactMarkdown className="text-center" style={{ fontSize: '12px' }}>
+                        {content}
+                      </ReactMarkdown>
+                    </Card.Body>
+                  </Card>
+                )}
+                <Form.Group controlId="content" style={{ marginBottom: '18px' }}>
+                  <Form.Control
+                    className="text-center"
+                    required
+                    type="content"
+                    value={category}
+                    placeholder="Edit category"
+                    onChange={(e) => setCategory(e.target.value)} />
+                </Form.Group>
+                {loading && <Loading size={50} />}
+                <hr />
+                <div style={{ marginTop: '20px', marginBottom: '10px' }}>
+                  <Button
+                    variant="outline-primary"
+                    className="mx-2"
+                    onClick={() => share()}
+                  >Share link</Button>
+                  <Button
+                    variant="outline-primary"
+                    className="mx-2"
+                    onClick={() => getPDF()}
+                  >Save as pdf</Button>
+                  <Button className="mx-2" variant="outline-primary" type="submit">
+                    Update Article
+                  </Button>
+                  <Button
+                    className="mx-2"
+                    variant="outline-primary"
+                    onClick={() => deleteHandler(match.params.id)}>
+                    Delete
+                  </Button>
+                </div>
+              </Form>
+            </Card.Body>
+            <Card.Footer className="text-muted">
+              {date}
+            </Card.Footer>
+          </Card>
+      }
     </MainScreen >
   );
 }

@@ -4,7 +4,6 @@ import axios from "axios"
 import { Button, Card, Pagination } from "react-bootstrap"
 import Loading from "../components/Loading";
 
-
 function All({ search }) {
     const [articles, setArticles] = useState([]);
     const [loading, setLoading] = useState(false);
