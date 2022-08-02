@@ -87,13 +87,13 @@ function All({ search }) {
                     (pages > 1 && !loading) ?
                         <Pagination>
                             <Pagination.Item disabled={prevdisabled} onClick={prevpage}>
-                                {'<< '}
+                                {'<<'}
                             </Pagination.Item >
-                            <div style={{ marginTop: '8px' }}>
-                                {iteration + 1}
+                            <div style={{ margin: '8px' }}>
+                                {iteration + 1} / {pages}
                             </div>
                             <Pagination.Item disabled={nextdisabled} onClick={nextpage}>
-                                {' >>'}
+                                {'>>'}
                             </Pagination.Item >
                         </Pagination>
                         : null
