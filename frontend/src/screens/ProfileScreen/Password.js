@@ -91,6 +91,7 @@ const Password = ({ history }) => {
                                 type="password"
                                 placeholder="Enter new password"
                                 value={password}
+                                required
                                 onChange={(e) => setPassword(e.target.value)}
                             ></Form.Control>
                         </Form.Group>
@@ -100,6 +101,7 @@ const Password = ({ history }) => {
                                 type="password"
                                 placeholder="Confirm password"
                                 value={confirmPassword}
+                                required
                                 onChange={(e) => setConfirmPassword(e.target.value)}
                             ></Form.Control>
                         </Form.Group>

@@ -15,6 +15,7 @@ const ProfileScreen = ({ history }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [pic, setPic] = useState();
+  const [disabled, setDisabled] = useState(true);
 
   const dispatch = useDispatch();
 
@@ -51,7 +52,8 @@ const ProfileScreen = ({ history }) => {
         .catch((err) => {
           console.log(err);
         });
-      toast.warn(`Uploading image...`, {
+      setDisabled(false);
+      toast.warn(`Image uploading`, {
         position: "bottom-right",
         autoClose: 4000,
         hideProgressBar: false,
@@ -66,6 +68,15 @@ const ProfileScreen = ({ history }) => {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(updateProfile({ name, email, pic }));
+  };
+
+  const handleChange1 = (e) => {
+    setName(e.target.value);
+    setDisabled(false);
+  };
+  const handleChange2 = (e) => {
+    setEmail(e.target.value);
+    setDisabled(false);
   };
 
   return (
@@ -84,7 +95,7 @@ const ProfileScreen = ({ history }) => {
                   type="text"
                   placeholder="Enter full name"
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => handleChange1(e)}
                 ></Form.Control>
               </Form.Group>
               <Form.Group controlId="email" style={{ marginBottom: '20px', width: '500px', textAlign: 'center' }}>
@@ -94,10 +105,10 @@ const ProfileScreen = ({ history }) => {
                   type="email"
                   placeholder="Enter email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => handleChange2(e)}
                 ></Form.Control>
               </Form.Group>
-              <Form.Group controlId="pic" style={{ marginBottom: '20px', width: '500px', textAlign: 'center' }}>
+              <Form.Group controlId="dik" style={{ marginBottom: '20px', width: '500px', textAlign: 'center' }}>
                 <Form.File
                   onChange={(e) => postDetails(e.target.files[0])}
                   id="custom-file"
@@ -108,7 +119,7 @@ const ProfileScreen = ({ history }) => {
                 />
               </Form.Group>
               <Form.Group style={{ marginBottom: '20px', width: '500px', textAlign: 'center' }}>
-                <Button type="submit" varient="primary">
+                <Button type="submit" varient="primary" disabled={disabled}>
                   Update
                 </Button> <br />
                 <Button href="/resetpassword" varient="primary" style={{ marginTop: '20px' }}>
