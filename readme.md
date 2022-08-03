@@ -45,9 +45,9 @@ How to fix: Delete the `package-lock.json` file and reinstall.
 
 Better fix: To containerize the repository with Node environment and pull using Docker.
 
-## To-do:
-      - Make the app responsive.
-      - Implement pseudo-fetch algorithm in the 'getAll' function of [this](https://github.com/sambhavsaxena/ikigai/blob/main/backend/controllers/articleController.js) file.
+## To-do
+   - Make the app responsive.
+   - Implement pseudo-fetch algorithm in the ```getAll()``` function of [this](https://github.com/sambhavsaxena/ikigai/blob/main/backend/controllers/articleController.js) file.
 
 ## Documentation
 You can find the privacy policy [on this page](https://policiesofikigai.netlify.app/).  
