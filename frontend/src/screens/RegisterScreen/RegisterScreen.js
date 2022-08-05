@@ -9,7 +9,9 @@ import MainScreen from "../../components/MainScreen";
 import "./RegisterScreen.css";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import dotenv from "dotenv"
 
+dotenv.config()
 toast.configure()
 
 function RegisterScreen({ history }) {
@@ -33,7 +35,7 @@ function RegisterScreen({ history }) {
       data.append("file", pics);
       data.append("upload_preset", "monospace");
       data.append("cloud_name", "dcprhtqwe");
-      fetch("https://api.cloudinary.com/v1_1/dcprhtqwe/image/upload", {
+      fetch("https://api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/image/upload", {
         method: "post",
         body: data,
       })
