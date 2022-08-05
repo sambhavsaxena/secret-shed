@@ -11,7 +11,7 @@ function All({ search }) {
     const [prevdisabled, setPrevdisabled] = useState();
     const [pages, setPages] = useState(1);
     const [iteration, setIteration] = useState(0);
-    const ipp = 5; //Intents per page
+    const ipp = 10; //Intents per page
     useEffect(() => {
         setLoading(true);
         const fetching = async () => {
@@ -55,7 +55,7 @@ function All({ search }) {
                         articles && articles.filter((filteredArticle) =>
                             filteredArticle.title.toLowerCase().includes(search.toLowerCase()) ||
                             filteredArticle.category.toLowerCase().includes(search.toLowerCase())
-                        ).reverse().map((article) => (
+                        ).map((article) => (
                             <Card style={{ margin: 10 }} key={article._id}>
                                 <Card.Header style={{ display: "flex" }}>
                                     <span
