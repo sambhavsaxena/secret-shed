@@ -7,6 +7,7 @@ For privacy policy, visit [this link](https://policiesofikigai.netlify.app/).
 
 * **CRUD:** Add, retrieve, update, delete, all according to your needs.
 * **Save every bit of content you write:** A `save as pdf` feature has been added with the latest release which allows users to save their content as PDFs.
+* **Stay anonymous:** Nobody gets to know the authors, not even the people working behind. Everything is encrypted.
 * **Share articles with a public link:** After you've done editing your content, you can now share it with a single click. A public link will be created and pasted on clipboard within moments.
 * **Encrypted pdfs:** The downloaded pdf is anti-OCR, which makes it almost impossible for the text to be copied and pasted.
 * **Fast retrieval:** Low server latency and hence fast retrieval.
