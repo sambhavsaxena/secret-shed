@@ -13,9 +13,7 @@ For privacy policy, visit [this link](https://policiesofikigai.netlify.app/).
 * **Fast retrieval:** Low server latency and hence fast retrieval.
 * **Full markdown support:** Write and engage in markdown, just like all other blog sharing websites.
 
-
-![image](https://user-images.githubusercontent.com/76242518/182047217-fc5ea1f3-f21f-4712-8dfa-51fdbe90d72b.png)
-
+![image](https://user-images.githubusercontent.com/76242518/183030652-415b0da3-0b8b-4e3f-bcec-9dbd1a92cffe.png)
 
 ## Installation
 
