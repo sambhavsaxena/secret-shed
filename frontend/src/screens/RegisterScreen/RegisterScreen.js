@@ -33,7 +33,7 @@ function RegisterScreen({ history }) {
     if (pics.type === "image/jpeg" || pics.type === "image/png") {
       const data = new FormData();
       data.append("file", pics);
-      data.append("upload_preset", "monospace");
+      data.append("upload_preset", "ikigai");
       data.append("cloud_name", "dcprhtqwe");
       fetch("https://api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/image/upload", {
         method: "post",
