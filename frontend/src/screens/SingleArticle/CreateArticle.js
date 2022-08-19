@@ -65,17 +65,18 @@ function CreateArticle({ history }) {
                 className="text-center"
                 type="title"
                 value={title}
+                maxLength={40}
                 placeholder="Give a title"
                 onChange={(e) => setTitle(e.target.value)}
               />
             </Form.Group>
-
             <Form.Group controlId="content" style={{ marginBottom: '20px' }}>
               <Form.Control
                 required
                 className="text-center"
                 as="textarea"
                 value={content}
+                maxLength={5000}
                 placeholder="Fill up with magic"
                 rows={12}
                 onChange={(e) => setContent(e.target.value)}
@@ -90,13 +91,13 @@ function CreateArticle({ history }) {
                 </Card.Body>
               </Card>
             )}
-
             <Form.Group controlId="content" style={{ marginBottom: '20px' }}>
               <Form.Control
                 className="text-center"
                 required
                 type="content"
                 value={category}
+                maxLength={10}
                 placeholder="Specify a category"
                 onChange={(e) => setCategory(e.target.value)}
               />

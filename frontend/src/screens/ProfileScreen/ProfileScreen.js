@@ -97,6 +97,7 @@ const ProfileScreen = ({ history }) => {
                   type="text"
                   placeholder="Enter full name"
                   value={name}
+                  maxLength={40}
                   onChange={(e) => handleChange1(e)}
                 ></Form.Control>
               </Form.Group>
@@ -107,6 +108,7 @@ const ProfileScreen = ({ history }) => {
                   type="email"
                   placeholder="Enter email"
                   value={email}
+                  maxLength={40}
                   onChange={(e) => handleChange2(e)}
                 ></Form.Control>
               </Form.Group>

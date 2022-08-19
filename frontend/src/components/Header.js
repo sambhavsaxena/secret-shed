@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Container,
   Form,
@@ -13,16 +13,20 @@ import { logout } from "../actions/userActions";
 
 function Header({ setSearch }) {
   const dispatch = useDispatch();
-
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
-
+  const [username, setUsername] = useState("");
   const logoutHandler = () => {
     dispatch(logout());
   };
-
-  useEffect(() => { }, [userInfo]);
-
+  useEffect(() => {
+    if (userInfo.name <= 7) {
+      setUsername(userInfo.name);
+    }
+    else {
+      setUsername(userInfo.name.substring(0, 7) + "...");
+    }
+  }, [userInfo]);
   return (
     <Navbar collapseOnSelect expand="lg" bg="light">
       <Container>
@@ -57,8 +61,7 @@ function Header({ setSearch }) {
                       width="25"
                       height="25"
                       style={{ marginRight: '5px', borderRadius: '50%' }}
-                    />
-                    {`${userInfo.name}`}
+                    />{username}
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item className="text-center" href="/myarticles">

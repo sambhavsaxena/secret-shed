@@ -105,6 +105,7 @@ function RegisterScreen({ history }) {
               type="name"
               value={name}
               placeholder="Enter name"
+              maxLength={40}
               onChange={(e) => setName(e.target.value)}
             />
           </Form.Group>
@@ -114,6 +115,7 @@ function RegisterScreen({ history }) {
               required
               type="email"
               value={email}
+              maxLength={40}
               placeholder="Enter email"
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -124,6 +126,7 @@ function RegisterScreen({ history }) {
               required
               type="password"
               value={password}
+              maxLength={100}
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -135,6 +138,7 @@ function RegisterScreen({ history }) {
               required
               type="password"
               value={confirmpassword}
+              maxLength={100}
               placeholder="Confirm password"
               onChange={(e) => setConfirmPassword(e.target.value)}
             />

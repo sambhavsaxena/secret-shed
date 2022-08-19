@@ -151,6 +151,7 @@ function SingleArticle({ match, history }) {
                     className="text-center"
                     type="title"
                     value={title}
+                    maxLength={40}
                     placeholder="Edit title"
                     onChange={(e) => setTitle(e.target.value)} />
                 </Form.Group>
@@ -160,6 +161,7 @@ function SingleArticle({ match, history }) {
                     className="text-center"
                     as="textarea"
                     value={content}
+                    maxLength={5000}
                     placeholder="Edit your spell"
                     rows={12}
                     onChange={(e) => setContent(e.target.value)} />
@@ -182,6 +184,7 @@ function SingleArticle({ match, history }) {
                     required
                     type="content"
                     value={category}
+                    maxLength={10}
                     placeholder="Edit category"
                     onChange={(e) => setCategory(e.target.value)} />
                 </Form.Group>
