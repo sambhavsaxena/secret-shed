@@ -7,6 +7,7 @@ import Loading from "../components/Loading";
 function All({ search }) {
     const [articles, setArticles] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [isArticle, setIsArticle] = useState(false);
     const [nextdisabled, setNextdisabled] = useState();
     const [prevdisabled, setPrevdisabled] = useState();
     const [pages, setPages] = useState(1);
@@ -16,9 +17,15 @@ function All({ search }) {
         setLoading(true);
         const fetching = async () => {
             const source = await axios.get(`/api/articles/all`);
-            setArticles(source.data.slice(0 + (ipp * iteration), ipp + (ipp * iteration)));
-            setPages(Math.ceil(source.data.length / ipp));
-            setLoading(false);
+            if (source.data.length > 0) {
+                setArticles(source.data.slice(0 + (ipp * iteration), ipp + (ipp * iteration)));
+                setPages(Math.ceil(source.data.length / ipp));
+                setLoading(false);
+                setIsArticle(true);
+            } else {
+                setIsArticle(false);
+                setLoading(false);
+            }
         }
         fetching();
         if (iteration > 0 && iteration < pages - 1) {
@@ -52,7 +59,7 @@ function All({ search }) {
             <div>
                 {
                     loading ? <Loading /> :
-                        articles && articles.filter((filteredArticle) =>
+                        isArticle ? articles.filter((filteredArticle) =>
                             filteredArticle.title.toLowerCase().includes(search.toLowerCase()) ||
                             filteredArticle.category.toLowerCase().includes(search.toLowerCase())
                         ).map((article) => (
@@ -79,7 +86,7 @@ function All({ search }) {
                                     </div>
                                 </Card.Header>
                             </Card>
-                        ))
+                        )) : <div style={{ marginTop: '15%' }}><strong>No articles found</strong></div>
                 }
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '50px' }}>
