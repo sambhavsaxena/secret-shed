@@ -65,7 +65,7 @@ function CreateArticle({ history }) {
                 className="text-center"
                 type="title"
                 value={title}
-                maxLength={40}
+                maxLength={64}
                 placeholder="Give a title"
                 onChange={(e) => setTitle(e.target.value)}
               />
@@ -76,7 +76,7 @@ function CreateArticle({ history }) {
                 className="text-center"
                 as="textarea"
                 value={content}
-                maxLength={5000}
+                maxLength={4096}
                 placeholder="Fill up with magic"
                 rows={12}
                 onChange={(e) => setContent(e.target.value)}
@@ -97,7 +97,7 @@ function CreateArticle({ history }) {
                 required
                 type="content"
                 value={category}
-                maxLength={10}
+                maxLength={16}
                 placeholder="Specify a category"
                 onChange={(e) => setCategory(e.target.value)}
               />
