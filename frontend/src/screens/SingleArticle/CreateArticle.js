@@ -76,7 +76,7 @@ function CreateArticle({ history }) {
                 className="text-center"
                 as="textarea"
                 value={content}
-                maxLength={4096}
+                maxLength={16384}
                 placeholder="Fill up with magic"
                 rows={12}
                 onChange={(e) => setContent(e.target.value)}
