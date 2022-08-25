@@ -20,11 +20,16 @@ function Header({ setSearch }) {
     dispatch(logout());
   };
   useEffect(() => {
-    if (userInfo.name <= 7) {
-      setUsername(userInfo.name);
+    if (userInfo) {
+      if (userInfo.name <= 7) {
+        setUsername(userInfo.name);
+      }
+      else {
+        setUsername(userInfo.name.substring(0, 7) + "...");
+      }
     }
     else {
-      setUsername(userInfo.name.substring(0, 7) + "...");
+      return;
     }
   }, [userInfo]);
   return (
