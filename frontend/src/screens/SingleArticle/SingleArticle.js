@@ -161,7 +161,7 @@ function SingleArticle({ match, history }) {
                     className="text-center"
                     as="textarea"
                     value={content}
-                    maxLength={4096}
+                    maxLength={16384}
                     placeholder="Edit your spell"
                     rows={12}
                     onChange={(e) => setContent(e.target.value)} />
