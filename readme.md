@@ -7,6 +7,7 @@ For privacy policy, visit [this link](https://policiesofikigai.netlify.app/).
 
 * **CRUD:** Add, retrieve, update, delete, all according to your needs.
 * **Save every bit:** A `save as pdf` feature has been added with the latest release which allows users to save their content as PDFs.
+
 ![screenshot](https://raw.githubusercontent.com/thatsameguyokay/images/main/ikigai.png)
 
 * **Stay anonymous:** Nobody gets to know the authors. Everything is encrypted.
