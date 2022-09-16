@@ -9,6 +9,8 @@ import ErrorMessage from "../../components/ErrorMessage";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+toast.configure()
+
 const ProfileScreen = ({ history }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -24,6 +26,8 @@ const ProfileScreen = ({ history }) => {
   const { loading, error, success } = userUpdate;
 
   useEffect(() => {
+    const cloud = process.env.REACT_APP_CLOUD
+    console.log(cloud)
     if (!userInfo) {
       history.push("/");
     } else {
