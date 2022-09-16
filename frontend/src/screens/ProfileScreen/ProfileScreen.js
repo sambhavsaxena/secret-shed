@@ -8,10 +8,6 @@ import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import dotenv from "dotenv"
-
-dotenv.config()
-toast.configure()
 
 const ProfileScreen = ({ history }) => {
   const [name, setName] = useState("");
@@ -38,12 +34,12 @@ const ProfileScreen = ({ history }) => {
   }, [history, userInfo]);
 
   const postDetails = (pics) => {
-    if (pics.type === "image/jpeg" || pics.type === "image/png") {
+    if (pics.type === "image/jpeg" || pics.type === "image/jpg" || pics.type === "image/png") {
       const data = new FormData();
       data.append("file", pics);
-      data.append("upload_preset", "ikigai");
-      data.append("cloud_name", `${process.env.CLOUD_NAME}`);
-      fetch(`https://api.cloudinary.com/v1_1/${process.env.CLOUD_NAME}/image/upload`, {
+      data.append("upload_preset", "monospace");
+      data.append("cloud_name", `dcprhtqwe`);
+      fetch(`https://api.cloudinary.com/v1_1/dcprhtqwe/image/upload`, {
         method: "post",
         body: data,
       })
@@ -70,6 +66,7 @@ const ProfileScreen = ({ history }) => {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(updateProfile({ name, email, pic }));
+
   };
 
   const handleChange1 = (e) => {
