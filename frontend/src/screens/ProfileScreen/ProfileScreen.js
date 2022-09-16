@@ -26,8 +26,6 @@ const ProfileScreen = ({ history }) => {
   const { loading, error, success } = userUpdate;
 
   useEffect(() => {
-    const cloud = process.env.REACT_APP_CLOUD
-    console.log(cloud)
     if (!userInfo) {
       history.push("/");
     } else {
