@@ -35,12 +35,14 @@ function Header({ setSearch }) {
   return (
     <Navbar collapseOnSelect expand="lg" bg="light">
       <Container>
-        <Navbar.Brand href="/">IKIGAI</Navbar.Brand>
+        <div style={{paddingRight:"10%"}}>
+          <Navbar.Brand href="/">IKIGAI</Navbar.Brand>
+        </div>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="m-auto" >
+          <Nav className="m-auto">
             {userInfo && (
-              <Form inline style={{ marginLeft: '130px' }}>
+              <Form inline style={{margin:"2%"}}>
                 <FormControl
                   type="text"
                   placeholder="Find article"
@@ -58,6 +60,7 @@ function Header({ setSearch }) {
                 <NavDropdown
                   title="USER"
                   id="collasible-nav-dropdown"
+                  style={{width:"100%"}}
                 >
                   <NavDropdown.Item href="/profile">
                     <img

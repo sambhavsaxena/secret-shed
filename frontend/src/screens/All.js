@@ -3,6 +3,9 @@ import MainScreen from "../components/MainScreen"
 import axios from "axios"
 import { Button, Card, Pagination } from "react-bootstrap"
 import Loading from "../components/Loading";
+import "./All.css";
+
+
 
 function All({ search }) {
     const [articles, setArticles] = useState([]);
@@ -12,7 +15,10 @@ function All({ search }) {
     const [prevdisabled, setPrevdisabled] = useState();
     const [pages, setPages] = useState(1);
     const [iteration, setIteration] = useState(0);
+    const [frameWidth, setFrameWidth] = useState(window.innerWidth)
     const ipp = 10; //Intents per page
+
+
     useEffect(() => {
         setLoading(true);
         const fetching = async () => {
@@ -40,7 +46,9 @@ function All({ search }) {
             setPrevdisabled(false);
             setNextdisabled(true);
         }
-    }, [iteration]);
+        setFrameWidth(window.innerWidth);
+        console.log("running")
+    }, [iteration, frameWidth]);
 
     const nextpage = () => {
         if (iteration < pages - 1) {
@@ -53,6 +61,8 @@ function All({ search }) {
             setIteration(iteration - 1);
         }
     }
+    // const width = window.innerWidth;
+    // console.log(height);
 
     return (
         <MainScreen title="Recently published">
@@ -64,25 +74,29 @@ function All({ search }) {
                             filteredArticle.category.toLowerCase().includes(search.toLowerCase())
                         ).map((article) => (
                             <Card style={{ margin: 10 }} key={article._id}>
-                                <Card.Header style={{ display: "flex" }}>
+                                <Card.Header style={frameWidth <= 600 ? { display: "flex", flexDirection: "column" } : { display: "flex" }}>
                                     <span
                                         style={{
                                             color: "black",
                                             flex: 1,
                                             alignSelf: "center",
                                             fontSize: 18,
+                                            fontWeight:"bold"
                                         }}>
                                         {
                                             article.title
                                         }
+                                        {frameWidth <= 600 ? <hr /> : null}
                                     </span>
-                                    <span style={{ flex: 1, alignSelf: "center" }}>
-                                        Category:{' '}{
-                                            article.category
-                                        }
-                                    </span>
-                                    <div>
-                                        <Button href={`/articles/${article._id}`} style={{ marginRight: '5px' }}>Read</Button>
+                                    <div className="mix">
+                                        <span style={{ flex: 1, alignSelf: "center" }}>
+                                            Category:{' '}{
+                                                article.category
+                                            }
+                                        </span>
+                                        <div style={{ marginLeft: "50px" }}>
+                                            <Button href={`/articles/${article._id}`} size="sm">Read Article</Button>
+                                        </div>
                                     </div>
                                 </Card.Header>
                             </Card>

@@ -86,7 +86,7 @@ const ProfileScreen = ({ history }) => {
         <Row className="profileContainer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '100px' }}>
           <Col md={6}>
             <Form onSubmit={submitHandler}>
-              <Form.Group controlId="name" style={{ marginBottom: '20px', width: '500px', textAlign: 'center' }}>
+              <Form.Group controlId="name" style={{ marginBottom: '20px', width: '100%', textAlign: 'center' }}>
                 {loading && <Loading />}
                 {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
                 {success && <ErrorMessage variant="success">Updated successfully</ErrorMessage>}
@@ -100,7 +100,7 @@ const ProfileScreen = ({ history }) => {
                   onChange={(e) => handleChange1(e)}
                 ></Form.Control>
               </Form.Group>
-              <Form.Group controlId="email" style={{ marginBottom: '20px', width: '500px', textAlign: 'center' }}>
+              <Form.Group controlId="email" style={{ marginBottom: '20px', width: '100%', textAlign: 'center' }}>
                 <Form.Control
                   required
                   className="text-center"
@@ -111,7 +111,7 @@ const ProfileScreen = ({ history }) => {
                   onChange={(e) => handleChange2(e)}
                 ></Form.Control>
               </Form.Group>
-              <Form.Group controlId="dik" style={{ marginBottom: '20px', width: '500px', textAlign: 'center' }}>
+              <Form.Group controlId="dik" style={{ marginBottom: '20px', width: '100%', textAlign: 'center' }}>
                 <Form.File
                   onChange={(e) => postDetails(e.target.files[0])}
                   id="custom-file"
@@ -121,7 +121,7 @@ const ProfileScreen = ({ history }) => {
                   custom
                 />
               </Form.Group>
-              <Form.Group style={{ marginBottom: '20px', width: '500px', textAlign: 'center' }}>
+              <Form.Group style={{ marginBottom: '20px', width: '100%', textAlign: 'center' }}>
                 <Button type="submit" varient="primary" disabled={disabled}>
                   Update
                 </Button> <br />
