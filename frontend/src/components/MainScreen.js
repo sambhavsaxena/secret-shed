@@ -10,7 +10,7 @@ function MainScreen({ children, title }) {
           <div className="page">
             {title && (
               <>
-                <h4 className="heading">{title}</h4>
+                <h4 style={window.innerWidth <= 600 ? { fontSize: "1.2rem" } : {}} className="heading">{title}</h4>
                 <hr />
               </>
             )}
