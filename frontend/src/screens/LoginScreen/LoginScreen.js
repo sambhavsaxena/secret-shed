@@ -47,7 +47,7 @@ function LoginScreen({ history }) {
         {loading && <Loading />}
         {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
         <Form onSubmit={submitHandler}>
-          <Form.Group controlId="formBasicEmail" style={{ marginBottom: '20px', width: '500px', textAlign: 'center' }}>
+          <Form.Group controlId="formBasicEmail" style={window.innerWidth <= 600 ? { marginBottom: '20px', width: '90vw', textAlign: 'center' } : {marginBottom: '20px', width: '40vw', textAlign: 'center' }}>
             <Form.Control
               required
               style={{ textAlign: 'center' }}

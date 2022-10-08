@@ -96,8 +96,8 @@ function RegisterScreen({ history }) {
         {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
         {message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
         {loading && <Loading />}
-        <Form onSubmit={submitHandler} style={{ marginBottom: '20px', width: '500px', textAlign: 'center' }}>
-          <Form.Group controlId="name">
+        <Form onSubmit={submitHandler} >
+          <Form.Group controlId="name" style={window.innerWidth <= 600 ? { marginBottom: '20px', width: '90vw', textAlign: 'center' } : {marginBottom: '20px', width: '40vw', textAlign: 'center' }}>
             <Form.Control className="text-center my-4"
               required
               type="name"
@@ -106,10 +106,8 @@ function RegisterScreen({ history }) {
               maxLength={40}
               onChange={(e) => setName(e.target.value)}
             />
-          </Form.Group>
-
-          <Form.Group controlId="formBasicEmail" style={{ marginBottom: '20px', width: '500px', textAlign: 'center' }}>
             <Form.Control className="text-center"
+              style={{marginBottom:"20px"}}
               required
               type="email"
               value={email}
@@ -117,10 +115,8 @@ function RegisterScreen({ history }) {
               placeholder="Enter email"
               onChange={(e) => setEmail(e.target.value)}
             />
-          </Form.Group>
-
-          <Form.Group controlId="formBasicPassword" style={{ marginBottom: '20px', width: '500px', textAlign: 'center' }}>
             <Form.Control className="text-center"
+              style={{marginBottom:"20px"}}
               required
               type="password"
               value={password}
@@ -128,10 +124,8 @@ function RegisterScreen({ history }) {
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
             />
-          </Form.Group>
-
-          <Form.Group controlId="confirmPassword" style={{ marginBottom: '20px', width: '500px', textAlign: 'center' }}>
             <Form.Control
+              style={{marginBottom:"20px"}}
               className="text-center"
               required
               type="password"
@@ -140,8 +134,6 @@ function RegisterScreen({ history }) {
               placeholder="Confirm password"
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
-          </Form.Group >
-          <Form.Group controlId="pic" style={{ marginBottom: '20px', width: '500px', textAlign: 'center' }}>
             <Form.File
               className="text-center"
               onChange={(e) => postDetails(e.target.files[0])}
@@ -151,7 +143,6 @@ function RegisterScreen({ history }) {
               custom
             />
           </Form.Group>
-
           <Button variant="primary" type="submit" style={{ marginTop: '20px' }}>
             Create account
           </Button>
