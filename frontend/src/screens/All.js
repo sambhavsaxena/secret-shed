@@ -95,7 +95,7 @@ function All({ search }) {
                                             }
                                         </span>
                                         <div style={{ marginLeft: "50px" }}>
-                                            <Button size="sm">Read Article</Button>
+                                            <Button href={`/articles/${article._id}`} size="sm">Read Article</Button>
                                         </div>
                                     </div>
                                 </Card.Header>

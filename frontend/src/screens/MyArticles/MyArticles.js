@@ -87,11 +87,12 @@ function MyArticles({ history, search }) {
           .map((article) => (
             <Accordion key={article._id}>
               <Card style={{ margin: 10 }} >
-                <Card.Header style={{ display: "flex" }}>
+                <Card.Header style={window.innerWidth <= 600 ? { display: "flex", flexDirection: "column" } : { display: "flex" }}>
                   <span
                     style={{
                       color: "black",
                       textDecoration: "none",
+                      fontWeight:"bold",
                       flex: 1,
                       cursor: "pointer",
                       alignSelf: "center",
@@ -102,6 +103,7 @@ function MyArticles({ history, search }) {
                       variant="link"
                       eventKey="0">
                       {article.title}
+                      {window.innerWidth <= 600 ? <hr/> : null}
                     </Accordion.Toggle>
                   </span>
                   <div>
