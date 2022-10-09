@@ -138,7 +138,7 @@ const ProfileScreen = ({ history }) => {
               justifyContent: "center",
             }}
           >
-            <img src={pic} alt={name} className="profilePic" style={{ width: '50vh', height: '50vh', borderRadius: '50%', margin: 'auto' }} />
+            <img src={pic} alt={name} className="profilePic" style={{ width: '40vh', height: '40vh', borderRadius: '50%', margin: 'auto' }} />
           </Col>
         </Row>
       </div>
