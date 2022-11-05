@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap");
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Work Sans", "Segoe UI",
@@ -8,34 +7,29 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
 ::-webkit-scrollbar {
   width: 6px;
 }
-
 ::-webkit-scrollbar-track {
   background: #ffffff;
 }
-
 ::-webkit-scrollbar-thumb {
   background: rgb(54, 54, 54);
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(70, 70, 70);
 }
 
 ::-moz-selection {
   color: black;
-  background: #dfdfdf;
+  background: rgb(248, 248, 248);
 }
 
 ::selection {
   color: black;
-  background: #dfdfdf;
+  background: rgb(248, 248, 248);
 }
