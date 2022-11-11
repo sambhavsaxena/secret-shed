@@ -85,7 +85,7 @@ function SingleArticle({ match, history }) {
     };
 
     fetching();
-  }, [match.params.id, date]);
+  }, [match.params.id, date, history, userInfo]);
 
   const resetHandler = () => {
     setTitle("");

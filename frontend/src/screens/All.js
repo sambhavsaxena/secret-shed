@@ -48,7 +48,7 @@ function All({ search }) {
         }
         setFrameWidth(window.innerWidth);
         console.log("running")
-    }, [iteration, frameWidth]);
+    }, [iteration, frameWidth, pages]);
 
     const nextpage = () => {
         if (iteration < pages - 1) {
@@ -81,7 +81,7 @@ function All({ search }) {
                                             flex: 1,
                                             alignSelf: "center",
                                             fontSize: 18,
-                                            fontWeight:"bold"
+                                            fontWeight: "bold"
                                         }}>
                                         {
                                             article.title
