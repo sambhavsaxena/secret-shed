@@ -20,7 +20,7 @@ For privacy policy, visit [this link](https://policiesofikigai.netlify.app/).
 
 ## Installation
 
-Follow the steps to install the application to your local machine**:
+Follow the steps to install the application to your local machine:
 
 * Fork and clone [this](https://github.com/sambhavsaxena/ikigai) repository make an instant copy of the content.
 * Alternatively, you can download the source and set it up with Github Desktop.
