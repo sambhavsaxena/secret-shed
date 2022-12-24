@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import MainScreen from "../../components/MainScreen";
 import { Button, Card, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,24 +6,22 @@ import { createArticleAction } from "../../actions/articlesActions";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
 import ReactMarkdown from "react-markdown";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-toast.configure()
+toast.configure();
 
 function CreateArticle({ history }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [category, setCategory] = useState("");
-
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+  const dispatch = useDispatch();
 
   if (!userInfo) {
     history.push("/");
   }
-
-  const dispatch = useDispatch();
 
   const articleCreate = useSelector((state) => state.articleCreate);
   const { loading, error } = articleCreate;
@@ -40,9 +38,9 @@ function CreateArticle({ history }) {
     if (!title || !content || !category) return;
     resetHandler();
     history.push("/myarticles");
-    toast.success(`"${title}" created <3`, {
+    toast.success(`"${title}" created`, {
       position: "bottom-right",
-      autoClose: 4000,
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -51,15 +49,13 @@ function CreateArticle({ history }) {
     });
   };
 
-  useEffect(() => { }, []);
-
   return (
     <MainScreen title="Create an article">
-      <Card style={{ marginTop: '50px', marginBottom: '50px' }}>
+      <Card style={{ marginTop: "50px", marginBottom: "50px" }}>
         <Card.Body>
           <Form onSubmit={submitHandler}>
             {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
-            <Form.Group controlId="title" style={{ marginBottom: '20px' }}>
+            <Form.Group controlId="title" style={{ marginBottom: "20px" }}>
               <Form.Control
                 required
                 className="text-center"
@@ -70,7 +66,7 @@ function CreateArticle({ history }) {
                 onChange={(e) => setTitle(e.target.value)}
               />
             </Form.Group>
-            <Form.Group controlId="content" style={{ marginBottom: '20px' }}>
+            <Form.Group controlId="content" style={{ marginBottom: "20px" }}>
               <Form.Control
                 required
                 className="text-center"
@@ -83,15 +79,17 @@ function CreateArticle({ history }) {
               />
             </Form.Group>
             {content && (
-              <Card style={{ marginBottom: '20px' }}>
+              <Card style={{ marginBottom: "20px" }}>
                 <Card.Header>Article preview</Card.Header>
-                <Card.Text style={{ marginTop: '10px' }}><strong>{title}</strong></Card.Text>
+                <Card.Text style={{ marginTop: "10px" }}>
+                  <strong>{title}</strong>
+                </Card.Text>
                 <Card.Body>
                   <ReactMarkdown>{content}</ReactMarkdown>
                 </Card.Body>
               </Card>
             )}
-            <Form.Group controlId="content" style={{ marginBottom: '20px' }}>
+            <Form.Group controlId="content" style={{ marginBottom: "20px" }}>
               <Form.Control
                 className="text-center"
                 required
@@ -103,11 +101,15 @@ function CreateArticle({ history }) {
               />
             </Form.Group>
             {loading && <Loading size={50} />}
-            <div style={{ marginTop: '50px', marginBottom: '20px' }}>
+            <div style={{ marginTop: "50px", marginBottom: "20px" }}>
               <Button type="submit" variant="outline-primary">
                 Create Article
               </Button>
-              <Button className="mx-2" onClick={resetHandler} variant="outline-primary">
+              <Button
+                className="mx-2"
+                onClick={resetHandler}
+                variant="outline-primary"
+              >
                 Reset Fields
               </Button>
             </div>
@@ -118,7 +120,7 @@ function CreateArticle({ history }) {
           {new Date().toLocaleTimeString()} | {new Date().toLocaleDateString()}
         </Card.Footer>
       </Card>
-    </MainScreen >
+    </MainScreen>
   );
 }
 

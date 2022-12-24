@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import MainScreen from "../../components/MainScreen";
 import "./ProfileScreen.css";
@@ -6,12 +6,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateProfile } from "../../actions/userActions";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-toast.configure()
+toast.configure();
 
 const ProfileScreen = ({ history }) => {
+  const cloud = `dcprhtqwe`;
+  const toastId = useRef(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [pic, setPic] = useState();
@@ -36,39 +38,49 @@ const ProfileScreen = ({ history }) => {
   }, [history, userInfo]);
 
   const postDetails = (pics) => {
-    if (pics.type === "image/jpeg" || pics.type === "image/jpg" || pics.type === "image/png") {
+    setDisabled(true);
+    if (pics.type === "image/jpeg" || pics.type === "image/png") {
       const data = new FormData();
       data.append("file", pics);
       data.append("upload_preset", "ikigai");
-      data.append("cloud_name", `dcprhtqwe`);
-      fetch(`https://api.cloudinary.com/v1_1/dcprhtqwe/image/upload`, {
+      data.append("cloud_name", cloud);
+      toastId.current = toast.warn("Uploading image", {
+        position: "bottom-right",
+        hideProgressBar: true,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: false,
+        progress: undefined,
+        closeButton: false,
+      });
+      fetch(`https://api.cloudinary.com/v1_1/${cloud}/image/upload`, {
         method: "post",
         body: data,
       })
         .then((res) => res.json())
         .then((data) => {
           setPic(data.url.toString());
+          toast.dismiss(toastId.current);
+          toast.success("Image uploaded", {
+            position: "bottom-right",
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            autoClose: 2000,
+          });
+          setDisabled(false);
         })
         .catch((err) => {
           console.log(err);
         });
-      setDisabled(false);
-      toast.warn(`Image uploading`, {
-        position: "bottom-right",
-        autoClose: 4000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: false,
-        draggable: false,
-        progress: undefined,
-      });
     }
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(updateProfile({ name, email, pic }));
-
   };
 
   const handleChange1 = (e) => {
@@ -83,13 +95,32 @@ const ProfileScreen = ({ history }) => {
   return (
     <MainScreen title="Edit profile">
       <div>
-        <Row className="profileContainer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '100px' }}>
+        <Row
+          className="profileContainer"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginTop: "100px",
+          }}
+        >
           <Col md={6}>
             <Form onSubmit={submitHandler}>
-              <Form.Group controlId="name" style={{ marginBottom: '20px', width: '100%', textAlign: 'center' }}>
+              <Form.Group
+                controlId="name"
+                style={{
+                  marginBottom: "20px",
+                  width: "100%",
+                  textAlign: "center",
+                }}
+              >
                 {loading && <Loading />}
                 {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
-                {success && <ErrorMessage variant="success">Updated successfully</ErrorMessage>}
+                {success && (
+                  <ErrorMessage variant="success">
+                    Updated successfully
+                  </ErrorMessage>
+                )}
                 <Form.Control
                   required
                   className="text-center"
@@ -100,7 +131,14 @@ const ProfileScreen = ({ history }) => {
                   onChange={(e) => handleChange1(e)}
                 ></Form.Control>
               </Form.Group>
-              <Form.Group controlId="email" style={{ marginBottom: '20px', width: '100%', textAlign: 'center' }}>
+              <Form.Group
+                controlId="email"
+                style={{
+                  marginBottom: "20px",
+                  width: "100%",
+                  textAlign: "center",
+                }}
+              >
                 <Form.Control
                   required
                   className="text-center"
@@ -111,7 +149,14 @@ const ProfileScreen = ({ history }) => {
                   onChange={(e) => handleChange2(e)}
                 ></Form.Control>
               </Form.Group>
-              <Form.Group controlId="dik" style={{ marginBottom: '20px', width: '100%', textAlign: 'center' }}>
+              <Form.Group
+                controlId="dik"
+                style={{
+                  marginBottom: "20px",
+                  width: "100%",
+                  textAlign: "center",
+                }}
+              >
                 <Form.File
                   onChange={(e) => postDetails(e.target.files[0])}
                   id="custom-file"
@@ -121,11 +166,22 @@ const ProfileScreen = ({ history }) => {
                   custom
                 />
               </Form.Group>
-              <Form.Group style={{ marginBottom: '20px', width: '100%', textAlign: 'center' }}>
+              <Form.Group
+                style={{
+                  marginBottom: "20px",
+                  width: "100%",
+                  textAlign: "center",
+                }}
+              >
                 <Button type="submit" varient="primary" disabled={disabled}>
                   Update
-                </Button> <br />
-                <Button href="/resetpassword" varient="primary" style={{ marginTop: '20px' }}>
+                </Button>{" "}
+                <br />
+                <Button
+                  href="/resetpassword"
+                  varient="primary"
+                  style={{ marginTop: "20px" }}
+                >
                   Change password
                 </Button>
               </Form.Group>
@@ -138,11 +194,21 @@ const ProfileScreen = ({ history }) => {
               justifyContent: "center",
             }}
           >
-            <img src={pic} alt={name} className="profilePic" style={{ width: '40vh', height: '40vh', borderRadius: '50%', margin: 'auto' }} />
+            <img
+              src={pic}
+              alt={name}
+              className="profilePic"
+              style={{
+                width: "40vh",
+                height: "40vh",
+                borderRadius: "50%",
+                margin: "auto",
+              }}
+            />
           </Col>
         </Row>
       </div>
-    </MainScreen >
+    </MainScreen>
   );
 };
 

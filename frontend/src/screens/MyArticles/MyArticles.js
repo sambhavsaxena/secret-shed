@@ -4,13 +4,16 @@ import MainScreen from "../../components/MainScreen";
 import { Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteArticleAction, listArticles } from "../../actions/articlesActions";
+import {
+  deleteArticleAction,
+  listArticles,
+} from "../../actions/articlesActions";
 import Loading from "../../components/Loading";
 import ErrorMessage from "../../components/ErrorMessage";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-toast.configure()
+toast.configure();
 
 function MyArticles({ history, search }) {
   const dispatch = useDispatch();
@@ -52,15 +55,14 @@ function MyArticles({ history, search }) {
       history.push("/myarticles");
       toast.success(`Content deleted!`, {
         position: "bottom-right",
-        autoClose: 4000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
       });
-    }
-    else {
+    } else {
       return;
     }
   };
@@ -68,7 +70,11 @@ function MyArticles({ history, search }) {
   return (
     <MainScreen title={`Written by you`}>
       <Link to="/create">
-        <Button variant="outline-primary" style={{ marginBottom: '40px', marginTop: '50px' }} size="md">
+        <Button
+          variant="outline-primary"
+          style={{ marginBottom: "40px", marginTop: "50px" }}
+          size="md"
+        >
           Create an article
         </Button>
       </Link>
@@ -80,30 +86,44 @@ function MyArticles({ history, search }) {
       {loadingDelete && <Loading />}
       {articles &&
         articles
-          .filter((filteredArticle) =>
-            filteredArticle.title.toLowerCase().includes(search.toLowerCase()) || filteredArticle.category.toLowerCase().includes(search.toLowerCase())
+          .filter(
+            (filteredArticle) =>
+              filteredArticle.title
+                .toLowerCase()
+                .includes(search.toLowerCase()) ||
+              filteredArticle.category
+                .toLowerCase()
+                .includes(search.toLowerCase())
           )
           .reverse()
           .map((article) => (
             <Accordion key={article._id}>
-              <Card style={{ margin: 10 }} >
-                <Card.Header style={window.innerWidth <= 600 ? { display: "flex", flexDirection: "column" } : { display: "flex" }}>
+              <Card style={{ margin: 10 }}>
+                <Card.Header
+                  style={
+                    window.innerWidth <= 600
+                      ? { display: "flex", flexDirection: "column" }
+                      : { display: "flex" }
+                  }
+                >
                   <span
                     style={{
                       color: "black",
                       textDecoration: "none",
-                      fontWeight:"bold",
+                      fontWeight: "bold",
                       flex: 1,
                       cursor: "pointer",
                       alignSelf: "center",
                       fontSize: 18,
-                    }}>
+                    }}
+                  >
                     <Accordion.Toggle
                       as={Card.Text}
                       variant="link"
-                      eventKey="0">
+                      eventKey="0"
+                    >
                       {article.title}
-                      {window.innerWidth <= 600 ? <hr/> : null}
+                      {window.innerWidth <= 600 ? <hr /> : null}
                     </Accordion.Toggle>
                   </span>
                   <div>
@@ -119,8 +139,16 @@ function MyArticles({ history, search }) {
                 <Accordion.Collapse eventKey="0">
                   <Card.Body>
                     <blockquote className="blockquote mb-0">
-                      <ReactMarkdown className="text-center" style={{ fontSize: '12px' }}>{article.content}</ReactMarkdown>
-                      <footer className="blockquote-footer text-center" style={{ marginTop: '20px' }}>
+                      <ReactMarkdown
+                        className="text-center"
+                        style={{ fontSize: "12px" }}
+                      >
+                        {article.content}
+                      </ReactMarkdown>
+                      <footer
+                        className="blockquote-footer text-center"
+                        style={{ marginTop: "20px" }}
+                      >
                         Created:{" "}
                         <cite title="Source Title">
                           {article.createdAt.substring(0, 10)}
@@ -131,9 +159,8 @@ function MyArticles({ history, search }) {
                 </Accordion.Collapse>
               </Card>
             </Accordion>
-          ))
-      }
-    </MainScreen >
+          ))}
+    </MainScreen>
   );
 }
 

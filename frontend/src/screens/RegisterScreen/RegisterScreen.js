@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -13,12 +13,14 @@ import "react-toastify/dist/ReactToastify.css";
 toast.configure();
 
 function RegisterScreen({ history }) {
+  const cloud = `dcprhtqwe`;
+  const defaultIcon =
+    "https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png";
   const [email, setEmail] = useState("");
   const [nextDisabled, setNextDisabled] = useState(false);
   const [name, setName] = useState("");
-  const [pic, setPic] = useState(
-    "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
-  );
+  const toastId = useRef(null);
+  const [pic, setPic] = useState(defaultIcon);
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
   const [message] = useState(null);
@@ -34,8 +36,8 @@ function RegisterScreen({ history }) {
       const data = new FormData();
       data.append("file", pics);
       data.append("upload_preset", "ikigai");
-      data.append("cloud_name", `dcprhtqwe`);
-      toast.warn("Uploading image", {
+      data.append("cloud_name", cloud);
+      toastId.current = toast.warn("Uploading image", {
         position: "bottom-right",
         hideProgressBar: true,
         closeOnClick: false,
@@ -44,13 +46,14 @@ function RegisterScreen({ history }) {
         progress: undefined,
         closeButton: false,
       });
-      fetch(`https://api.cloudinary.com/v1_1/dcprhtqwe/image/upload`, {
+      fetch(`https://api.cloudinary.com/v1_1/${cloud}/image/upload`, {
         method: "post",
         body: data,
       })
         .then((res) => res.json())
         .then((data) => {
           setPic(data.url.toString());
+          toast.dismiss(toastId.current);
           toast.success("Image uploaded", {
             position: "bottom-right",
             hideProgressBar: false,
@@ -71,15 +74,6 @@ function RegisterScreen({ history }) {
   useEffect(() => {
     if (userInfo) {
       history.push("/");
-      toast.success("Sign in successful", {
-        position: "bottom-right",
-        autoClose: 4000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
     }
   }, [history, userInfo]);
 
@@ -88,7 +82,7 @@ function RegisterScreen({ history }) {
     if (confirmpassword !== password) {
       toast.error("Passwords do not match", {
         position: "bottom-right",
-        autoClose: 4000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -100,7 +94,7 @@ function RegisterScreen({ history }) {
     if (password.length < 6) {
       toast.error(`Password must be over 6 characters`, {
         position: "bottom-right",
-        autoClose: 4000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,

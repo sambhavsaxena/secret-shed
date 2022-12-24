@@ -1,5 +1,5 @@
-import mongoose from "mongoose"
-import bcrypt from "bcryptjs"
+import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
 
 const userSchema = mongoose.Schema(
   {
@@ -25,16 +25,16 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
       default:
-        "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
+        "https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png",
     },
   },
   {
     timestamps: true,
   }
-)
+);
 userSchema.methods.matchPassword = async function (enteredPassword) {
-  return await bcrypt.compare(enteredPassword, this.password)
-}
+  return await bcrypt.compare(enteredPassword, this.password);
+};
 // will encrypt password everytime its saved
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
@@ -42,6 +42,6 @@ userSchema.pre("save", async function (next) {
   }
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
-})
-const User = mongoose.model("User", userSchema)
-export default User
+});
+const User = mongoose.model("User", userSchema);
+export default User;
