@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import LandingPage from "./screens/LandingPage/LandingPage";
 import MyArticles from "./screens/MyArticles/MyArticles";
-import Rules from "./screens/Rules"
+import Rules from "./screens/Rules";
 import All from "./screens/All";
 import SingleArticle from "./screens/SingleArticle/SingleArticle";
 import LoginScreen from "./screens/LoginScreen/LoginScreen";
@@ -16,7 +16,7 @@ import Password from "./screens/ProfileScreen/Password";
 import About from "./screens/About";
 import NotFound from "./screens/NotFound";
 import Shared from "./screens/SingleArticle/Shared";
-import { Switch } from 'react-router-dom';
+import { Switch } from "react-router-dom";
 
 function App() {
   const [search, setSearch] = useState("");
@@ -29,13 +29,13 @@ function App() {
           <Route path="/signin" exact component={LoginScreen} />
           <Route path="/signup" exact component={RegisterScreen} />
           <Route
-            path="/myarticles" exact
-            component={({ history }) => (<MyArticles search={search} history={history} />)}
+            path="/myarticles"
+            exact
+            component={({ history }) => (
+              <MyArticles search={search} history={history} />
+            )}
           />
-          <Route
-            path="/" exact
-            component={() => (<All search={search} />)}
-          />
+          <Route path="/" exact component={() => <All search={search} />} />
           <Route path="/resetpassword" exact component={Password} />
           <Route path="/article/:id" exact component={SingleArticle} />
           <Route path="/articles/:id" exact component={Shared} />

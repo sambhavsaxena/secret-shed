@@ -21,16 +21,26 @@ function LandingPage({ history }) {
           <div className="intro-text">
             <div>
               <h2 className="title">ikigai</h2>
-              <p className="subtitle">Write and share your stories with people anonymously</p>
+              <p className="subtitle">
+                Write and share your stories with people anonymously
+              </p>
             </div>
             <div className="buttonContainer">
               <Link to="/signin">
-                <Button variant="outline-primary" size="md" className="landingbutton">
+                <Button
+                  variant="outline-primary"
+                  size="md"
+                  className="landingbutton"
+                >
                   Sign in
                 </Button>
               </Link>
               <Link to="/signup">
-                <Button variant="outline-primary" size="md" className="landingbutton">
+                <Button
+                  variant="outline-primary"
+                  size="md"
+                  className="landingbutton"
+                >
                   Sign up
                 </Button>
               </Link>
