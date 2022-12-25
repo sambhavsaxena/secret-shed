@@ -10,7 +10,10 @@ For privacy policy, visit [this link](https://policiesofikigai.netlify.app/).
 
 ![screenshot](https://cdn.statically.io/gh/thatsameguyokay/images/main/ikigai.png)
 
-* **Stay anonymous:** Nobody gets to know the authors. Everything is encrypted.
+* **Stay anonymous:** Nobody gets to know the authors. Everything is encrypted and this is what we get on the backend.
+<div align="center"><img src="https://user-images.githubusercontent.com/76242518/209463298-316c4483-1c8e-429c-a438-09fa39f1c30b.png"></div>
+
+
 * **Share articles with a public link:** After you've done editing your content, you can now share it with a single click. A public link will be created and pasted on clipboard within moments.
 * **Encrypted pdfs:** The downloaded pdf is anti-OCR, which makes it almost impossible for the text to be copied and pasted.
 * **Fast retrieval:** Low server latency and hence fast retrieval.
