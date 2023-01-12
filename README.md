@@ -1,4 +1,4 @@
-# [Ikigai](https://ikigai.herokuapp.com/) 
+# [Ikigai](https://ikigai-p9nl.onrender.com/) 
 
 Ikigai is a minimalistic but scalable blog web app, which can be used to publish blogs written with additional features of markdown.
 Because of its privacy-related liberations, we keep the user information encrypted. 
