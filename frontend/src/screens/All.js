@@ -43,7 +43,6 @@ function All({ search }) {
       setNextdisabled(true);
     }
     setFrameWidth(window.innerWidth);
-    console.log("running");
   }, [iteration, frameWidth, pages]);
 
   const nextpage = () => {
