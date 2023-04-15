@@ -18,7 +18,7 @@ const About = () => {
                 </p>
                 <br />
                 <h6>
-                    Checkout more about me <a href="https://sambhavsaxena.me" target="_blank" rel="noopener noreferrer">here</a>.
+                    Checkout more about me <a href="https://interpreted.vercel.app" target="_blank" rel="noopener noreferrer">here</a>.
                 </h6>
             </MainScreen>
             <a style={{ textDecoration: 'none', color: 'green' }} href="https://policiesofikigai.netlify.app/" target="_blank" rel="noopener noreferrer" ><p><strong>Privacy policy</strong></p></a>
