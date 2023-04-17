@@ -33,7 +33,7 @@ const ProfileScreen = ({ history }) => {
     } else {
       setName(userInfo.name);
       setEmail(userInfo.email);
-      setPic(userInfo.pic);
+      setPic(userInfo.pic.slice(5));  // removes 'http:' from pic url to establish a secure connection
     }
   }, [history, userInfo]);
 
