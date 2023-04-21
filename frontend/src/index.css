@@ -9,6 +9,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@page {
+  size: 210mm 297mm; 
+  margin: 27mm 16mm 27mm 16mm; 
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
