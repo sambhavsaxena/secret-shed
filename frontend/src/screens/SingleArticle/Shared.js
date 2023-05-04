@@ -60,7 +60,7 @@ function Shared({ match }) {
                                 <Card.Body ref={componentRef} style={{ marginTop: '20px' }}>
                                     <strong><div className="text-center" style={{ fontSize: '24px', marginTop: '16px', marginBottom: '4px' }}>{title}</div></strong>
                                     <ReactMarkdown className="text-center" style={{ fontSize: '12px' }}>---</ReactMarkdown>
-                                    <ReactMarkdown className="text-center" style={{ fontSize: '12px' }}>{content}</ReactMarkdown>
+                                    <ReactMarkdown style={{ fontSize: '12px' }}>{content}</ReactMarkdown>
                                 </Card.Body>
                                 <blockquote className="blockquote mb-0">
                                     <footer className="blockquote-footer text-center" style={{ marginTop: '20px' }}>
