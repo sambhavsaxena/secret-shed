@@ -69,7 +69,6 @@ function CreateArticle({ history }) {
             <Form.Group controlId="content" style={{ marginBottom: "20px" }}>
               <Form.Control
                 required
-                className="text-center"
                 as="textarea"
                 value={content}
                 maxLength={16384}
