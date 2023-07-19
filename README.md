@@ -8,7 +8,7 @@ For privacy policy, visit [this link](https://secretshed.netlify.app/).
 - **CRUD:** Add, retrieve, update, delete, all according to your needs.
 - **Save every bit:** A `save as pdf` feature has been added with the latest release which allows users to save their content as PDFs.
 
-![screenshot](https://cdn.statically.io/gh/thatsameguyokay/images/main/ikigai.png)
+![img2](https://github.com/sambhavsaxena/secret-shed/assets/76242518/8939c867-8010-4e44-b2a4-4b2823421607)
 
 - **Stay anonymous:** Nobody gets to know the authors. Everything is encrypted and this is what we get on the backend.
 <div align="center"><img src="https://user-images.githubusercontent.com/76242518/209463298-316c4483-1c8e-429c-a438-09fa39f1c30b.png"></div>
@@ -18,7 +18,7 @@ For privacy policy, visit [this link](https://secretshed.netlify.app/).
 - **Fast retrieval:** Low server latency and hence fast retrieval.
 - **Full markdown support:** Write and engage in markdown, just like all other blog sharing websites.
 
-![image](https://user-images.githubusercontent.com/76242518/183030652-415b0da3-0b8b-4e3f-bcec-9dbd1a92cffe.png)
+![img](https://github.com/sambhavsaxena/secret-shed/assets/76242518/4cedff59-318b-4514-bf68-038b849366ae)
 
 ## Installation
 
