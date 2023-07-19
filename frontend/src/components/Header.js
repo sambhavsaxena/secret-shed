@@ -8,7 +8,7 @@ import {
   NavDropdown,
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { } from "react-router-dom";
+import {} from "react-router-dom";
 import { logout } from "../actions/userActions";
 
 function Header({ setSearch }) {
@@ -23,26 +23,24 @@ function Header({ setSearch }) {
     if (userInfo) {
       if (userInfo.name <= 7) {
         setUsername(userInfo.name);
-      }
-      else {
+      } else {
         setUsername(userInfo.name.substring(0, 7) + "...");
       }
-    }
-    else {
+    } else {
       return;
     }
   }, [userInfo]);
   return (
     <Navbar collapseOnSelect expand="lg" bg="light">
       <Container>
-        <div style={{paddingRight:"10%"}}>
-          <Navbar.Brand href="/">IKIGAI</Navbar.Brand>
+        <div style={{ paddingRight: "10%" }}>
+          <Navbar.Brand href="/">Secret Shed</Navbar.Brand>
         </div>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="m-auto">
             {userInfo && (
-              <Form inline style={{margin:"2%"}}>
+              <Form inline style={{ margin: "2%" }}>
                 <FormControl
                   type="text"
                   placeholder="Find article"
@@ -60,7 +58,7 @@ function Header({ setSearch }) {
                 <NavDropdown
                   title="USER"
                   id="collasible-nav-dropdown"
-                  style={{width:"100%"}}
+                  style={{ width: "100%" }}
                 >
                   <NavDropdown.Item href="/profile">
                     <img
@@ -68,8 +66,9 @@ function Header({ setSearch }) {
                       src={`${userInfo.pic}`}
                       width="25"
                       height="25"
-                      style={{ marginRight: '5px', borderRadius: '50%' }}
-                    />{username}
+                      style={{ marginRight: "5px", borderRadius: "50%" }}
+                    />
+                    {username}
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item className="text-center" href="/myarticles">
@@ -80,7 +79,10 @@ function Header({ setSearch }) {
                     Rules
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item onClick={logoutHandler} className="text-center">
+                  <NavDropdown.Item
+                    onClick={logoutHandler}
+                    className="text-center"
+                  >
                     Logout
                   </NavDropdown.Item>
                 </NavDropdown>

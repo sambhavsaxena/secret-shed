@@ -1,8 +1,8 @@
 {
-  "name": "ikigai",
+  "name": "secretshed",
   "author": "Sambhav Saxena",
   "version": "2.1.0",
-  "description": "Article publishing website",
+  "description": "Anonymous article publishing website",
   "main": "server.js",
   "type": "module",
   "engines": {

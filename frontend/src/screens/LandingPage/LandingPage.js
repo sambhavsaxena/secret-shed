@@ -20,9 +20,9 @@ function LandingPage({ history }) {
         <Row>
           <div className="intro-text">
             <div>
-              <h2 className="title">ikigai</h2>
+              <h2 className="title">secret shed</h2>
               <p className="subtitle">
-                Write and share your stories with people anonymously
+                Share your guilty pleasures with the world anonymously
               </p>
             </div>
             <div className="buttonContainer">
