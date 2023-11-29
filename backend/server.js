@@ -4,6 +4,7 @@ import connectDB from "./config/db.js";
 import path from "path";
 import articleRoutes from "./routes/articleRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import certificateRoutes from "./routes/certificateRoutes.js";
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 
 dotenv.config();
@@ -13,6 +14,7 @@ const app = express();
 app.use(express.json());
 app.use("/api/articles", articleRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/certificate", certificateRoutes);
 
 const __dirname = path.resolve();
 if (process.env.NODE_ENV === "production") {
