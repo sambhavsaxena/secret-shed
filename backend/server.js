@@ -2,7 +2,6 @@ import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import path from "path";
-import cors from "cors";
 import articleRoutes from "./routes/articleRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import certificateRoutes from "./routes/certificateRoutes.js";
@@ -11,14 +10,6 @@ import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 dotenv.config();
 await connectDB();
 const app = express();
-
-const options = {
-  origin: "*",
-  methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type"],
-};
-
-app.use(cors(options));
 
 app.use(express.json());
 app.use("/api/articles", articleRoutes);
