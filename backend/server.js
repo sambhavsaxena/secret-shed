@@ -12,7 +12,13 @@ dotenv.config();
 await connectDB();
 const app = express();
 
-app.use(cors());
+const options = {
+  origin: "*",
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"],
+};
+
+app.use(cors(options));
 
 app.use(express.json());
 app.use("/api/articles", articleRoutes);
