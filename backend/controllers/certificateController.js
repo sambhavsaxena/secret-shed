@@ -11,7 +11,10 @@ const getCertificate = asyncHandler(async (req, res) => {
 });
 
 const CreateCertificate = asyncHandler(async (req, res) => {
-  const { cid, driveURL } = req.body;
+  const { cid, driveURL, passphrase } = req.body;
+  if (passphrase !== process.env.PASSPHRASE) {
+    res.status(401).json({ message: "Unauthorized!" });
+  }
   if (!cid || !driveURL) {
     res.status(404).json({ message: "Please fill out all the fields!" });
   }
