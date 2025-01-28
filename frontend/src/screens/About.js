@@ -38,16 +38,6 @@ const About = () => {
           .
         </h6>
       </MainScreen>
-      <a
-        style={{ textDecoration: "none", color: "green" }}
-        href="https://secretshed.netlify.app/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <p>
-          <strong>Privacy policy</strong>
-        </p>
-      </a>
     </div>
   );
 };
