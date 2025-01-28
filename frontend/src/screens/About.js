@@ -15,21 +15,19 @@ const About = () => {
         <p style={{ marginTop: "20%" }}>
           Hi, I'm Sambhav Saxena.
           <br /> <br />
-          I code and create things for the people.
+          I troll the internet on a daily basis.
           <br /> <br />
-          As a student, I've been working on several web projects, of both
-          personal and community scope.
+          As a student, I've been working on several web projects, and this is one of them.
           <br /> <br />
-          Sometimes I team up and play Valorant, or look at the stars and think
-          about humanity's dawn and dusk.
+          Sometimes I team up and play Valorant, or look at the stars, or read.
           <br /> <br />
-          Other times, I play Chess take photos of natural sceneries.
+          Other times, I document life.
         </p>
         <br />
         <h6>
-          Checkout more about me{" "}
+          Read my blogs{" "}
           <a
-            href="https://interpreted.vercel.app"
+            href="https://interpreted.vercel.app/blog"
             target="_blank"
             rel="noopener noreferrer"
           >
