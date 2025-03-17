@@ -5,6 +5,7 @@ import path from "path";
 import articleRoutes from "./routes/articleRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import certificateRoutes from "./routes/certificateRoutes.js";
+import emailRoutes from "./routes/emailRoutes.js"
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 
 dotenv.config();
@@ -24,6 +25,7 @@ app.use(express.json());
 app.use("/api/articles", articleRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/certificate", certificateRoutes);
+app.use("/api/email", emailRoutes);
 
 const __dirname = path.resolve();
 if (process.env.NODE_ENV === "production") {
