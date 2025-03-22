@@ -54,11 +54,21 @@ const health = asyncHandler(async (req, res) => {
 
 const createProducer = asyncHandler(async (req, res) => {
     try {
-        const { email, subject, body } = req.body;
+        const { email, subject, body, attachments } = req.body;
         if (!email || !subject || !body) {
             return res.status(400).json({ success: false, message: 'Missing required fields.' });
         }
-        const jobId = await queueEmail(email, subject, body);
+        const jobData = {
+            to: email,
+            subject,
+            body,
+            from: MAIL_SMTP_USER,
+            service: MAIL_SMTP_SERVICE
+        };
+        if (attachments && Array.isArray(attachments)) {
+            jobData.attachments = attachments;
+        }
+        const jobId = await notification_queue.add('email', jobData);
         res.status(200).json({ success: true, message: 'Email queued successfully', jobId });
     } catch (error) {
         console.error('Error queueing email:', error);
